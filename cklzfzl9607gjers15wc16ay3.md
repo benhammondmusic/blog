@@ -8,7 +8,7 @@ The process is quite straightforward:
 - copy-paste job descriptions from various listings on [BuiltInColorado](https://www.builtincolorado.com/), [LinkedIn](https://www.linkedin.com/in/benhammondmusic/), and [Indeed](https://www.indeed.com/) into one giant string (this could certainly be improved by scraping automatically with Selenium, similar to my  [GigUploader](https://github.com/benhammondmusic/songkick-bulk-upload)  project)
 - strip the string of problematic chars
 - remove matches from a persistent array of ignored words ('the', 'a', etc.) 
-- print each word to the screen, growing the font-size in proportion to the word frequency
+- print each word to the screen, growing the font-size in proportion to the word frequency.
 - use some css to rotate the words and add an interesting perspective effect
 - make the number indicator on each word bubble into a button which removes that word from the page and also adds it to the persistent array. For now these words are saved in local storage, but this could be hooked up into a simple MongoDB or other NoSQL database for more meaningful results over time.   
 
