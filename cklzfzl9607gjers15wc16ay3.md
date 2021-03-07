@@ -2,7 +2,7 @@
 
 Here's a quick code doodle I created a few months ago, combining some topics we'd been covering in both the career services and the Javascript / DOM manipulation classes at General Assembly (I'm currently enrolled in their Software Engineering Immersive program). I found myself wanting to quantify the types of words that appeared across various listings, and rather than simply rely on my unreliable impression as I clicked through, I decided to put on my coding-cap and built something!
 
- %[https://www.youtube.com/watch?v=tPWfMAeqe8Q]
+%[https://youtube.com/watch?v=tPWfMAeqe8Q]
 
 The process is quite straightforward: 
 - copy-paste job descriptions from various listings on [BuiltInColorado](https://www.builtincolorado.com/), [LinkedIn](https://www.linkedin.com/in/benhammondmusic/), and [Indeed](https://www.indeed.com/) into one giant string (this could certainly be improved by scraping automatically with Selenium, similar to my  [GigUploader](https://github.com/benhammondmusic/songkick-bulk-upload)  project)
