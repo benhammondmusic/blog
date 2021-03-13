@@ -119,6 +119,11 @@ var corsOptions = {
 - Yay! Hooray! We have a functioning app, and it only took use a few days of googling, stack overflowing, debugging, creating and ultimately abandoning feature branches, and coffee consuming. Now, we can flip those flash cards and study up for our next job interview!
 - Please comment, submit an issue, create a pull request, or reach out if you have any ideas, thoughts or corrections. I am learning this as I go, and typing these thoughts out to solidify the ideas. If it can help one other person I'd be elated; please let me know!
 
+### GitHub Repos
+
+- [Frontend Repo](https://github.com/benhammondmusic/jr-dev-flashcards-client)
+- [Backend Repo](https://github.com/benhammondmusic/flashcards)
+
 ### Deployments
 
 - [Frontend Client](https://jr-dev-flashcards.netlify.app/) - Use this to view the flashcards app.
