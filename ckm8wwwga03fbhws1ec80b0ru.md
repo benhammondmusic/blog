@@ -5,10 +5,12 @@ This guide is step #2, written to assist my group in getting our team's full sta
 ### Issues causing deployment failures
 - Just like with the backend, having our files inside a subfolder was causing issues. There may have been some other work around but once I again I moved the files to the floor of the project folder, so that the package.json was next to the .git repo. I attempted to use the same command as before and it didn't work, so ended up using the following separate commands to move all visible files and all hidden dot files respectively: 
 ```
-- mv gigboard/gigboard-client/* gigboard/
-- mv gigboard/gigboard-client/.* gigboard/
+# extract regular files and folders from inner folder
+mv gigboard/gigboard-client/* gigboard/
+# extract hidden files (those starting with dots) from the inner folder
+mv gigboard/gigboard-client/.* gigboard/
 ```
-- Also like the backend issues, we needed to replace the hard-coded API address with one that could work both in development on our local machines and in production after being deployed to Heroku. Using process.env is a great way to do this, as it allows your code to determine the current environment. Heroku automatically will make ``process.env.NODE_ENV``` return "production". To setup the alternate local development URL, you once again create a .env file, add the following line, and save: 
+- Also like the backend issues, we needed to replace the hard-coded API address with one that could work both in development on our local machines and in production after being deployed to Heroku. Using process.env is a great way to do this, as it allows your code to determine the current environment. Heroku automatically will set ```process.env.NODE_ENV``` set to the string "production". To setup the alternate local development URL, you once again create a .env file, add the following line, and save: 
 ```
 NODE_ENV='development'
 ```
