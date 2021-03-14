@@ -44,39 +44,24 @@ git mv wrongCapitalization.jsx CorrectCapitalization.jsx
 
 Change the offending file(s) to a totally new filename by prepending some nonsense to the filename, commit and push, then change file back to correct name, commit, and push again. In my case, it was ```models/Reportcard.js``` locally and in my code references, but still ```models/ReportCard.js``` on the deployed remotes.
 
-1.
 ``` 
 # rename to a completely new nonsense filename
 mv Reportcard.js beniscoolReportcard.js
-```
 
-2.
-```
 # git commit weird file, and importantly remove the old filename from your commit
 git add .
 git commit -m "first step fix uppercase bug"
-```
-3.
-```
+
 # deploy with weird file (this assumes my default branch is main and my remote deploy is setup already to Heroku)
 git push heroku main
-```
 
-4.
-```
 # change filename back to what you actually want (be sure it matches what's in your code)
 mv beniscoolReportcard.js Reportcard.js
-```
 
-5.
-```
 # git commit correct file, and importantly remove weird filename
 git add .
 git commit -m "last step fix uppercase bug"
-```
 
-6.
-```
 # deploy with correct filename, and it should work, besides all those new errors you'll get now that this one is squashed!
 git push heroku main
 ```
