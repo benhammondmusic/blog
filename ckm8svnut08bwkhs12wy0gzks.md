@@ -13,7 +13,7 @@ A quick guide to assist our project team in getting our group project deployed t
 
 _in browser_
 
-- visit [https://dashboard.heroku.com/apps] and login if needed
+- visit [heroku.com/apps](https://dashboard.heroku.com/apps) and login if needed
 - click dropdown "new" and then "create new app"
 - choose an available name that no one else on heroku has used; i used "ben-gigboard" and then click "create app"
 - click "deploy" option in the nav bar
@@ -23,7 +23,11 @@ _in your command line_
 
 - navigate to your backend folder, and make sure you're on your main branch.
 - ```git pull```
+- ```npm i``` to make sure all your node modules are installed
 - ```heroku login```, press any button and then log in with the browser that pops up, then close that browser window
+- do a local test run with ```heroku local web``` and then visit the localhost that it starts running on in your browser; in this case it chose *localhost:5000*. This is very similar to just running ```nodemon```. Don't worry about that circular dependency warning; apparently it's not an issue. 
+![Screen Shot 2021-03-14 at 12.17.24 AM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1615706287965/5bPkc9Kvk.png)
+
 - ```heroku git:remote -a ben-gigboard``` and replace ```ben-gigboard``` with whatever the exact name of your Heroku app is
 - ```git add .```
 - ```git commit -am "make it work please"```
