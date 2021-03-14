@@ -12,6 +12,7 @@ mv gigboard/gigboard-client/.* gigboard/
 ```
 - Also like the backend issues, we needed to replace the hard-coded API address with one that could work both in development on our local machines and in production after being deployed to Heroku. Using process.env is a great way to do this, as it allows your code to determine the current environment. Heroku automatically will set ```process.env.NODE_ENV``` set to the string "production". To setup the alternate local development URL, you once again create a .env file, add the following line, and save: 
 ```
+# inside your local .env file, which is gitignored
 NODE_ENV='development'
 ```
 Then in app.js or wherever we will be making API calls using fetch or axios, we can set this API_URL dynamically based on where the code is running. 
@@ -31,7 +32,7 @@ I used port 5000 because that seemed to be where ```heroku local web``` was serv
 
 ### To deploy the React frontend to a 2nd Heroku app
 
-_in browser_
+_first in browser_
 
 - visit [heroku.com/apps](https://dashboard.heroku.com/apps) and login if needed
 - click dropdown "new" and then "create new app"
@@ -40,7 +41,7 @@ _in browser_
 - click "deploy" option in the nav bar
 - mostly follow the [Deploy using Heroku Git] section with changes noted below
 
-_in your command line_
+_then in your command line_
 
 - navigate to your *frontend* folder, and make sure you're on your main branch.
 - ```git pull```
@@ -49,7 +50,7 @@ _in your command line_
 - ```heroku login``` back in your command line, press any button, log in with the browser that pops up, then close that browser window
 - you can also do a local test run with ```heroku local web``` if you'd like; make sure you kill anything running on port 5000 first. 
 
-- ```heroku git:remote -a gig-board``` and replace ```gig-board``` with whatever the exact name of this *new, front-end Heroku app* is that you just made. 
+- ```heroku git:remote -a YOUR-FRONTED-HEROKU-APP-NAME``` and replace ```YOUR-FRONTED-HEROKU-APP-NAME``` with whatever the exact name of this *new, front-end Heroku app* is that you just made. For instance, mine is deployed to *gig-board.herokuapp.com* so I will use *gig-board*.
 - ```git add .```
 - ```git commit -am "make it work for frontend too, please"```
 - ```git push heroku main```
