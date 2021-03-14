@@ -2,7 +2,7 @@
 
 A quick guide to assist our project team in getting our group project deployed to each member's individual Heroku app
 
-## These were the issues causing failed deploys:
+### These were the issues causing failed deploys:
 
 - the .git repo and the package.json need to both be on the floor of your project. I copied all the files out of the inner folder using ```cp -r /gigboard-Api/. /```, and then deleted the inner folder. Command courtesy of [this Stack Overflow](https://stackoverflow.com/questions/20192070/how-to-move-all-files-including-hidden-files-into-parent-directory-via)
 - the PORT needed to be assigned dynamically: Instead of PORT = 3001, we needed to use ```const PORT = process.env.PORT || 3001``` which lets Heroku choose the correct port, and our local machine to use 3001.
