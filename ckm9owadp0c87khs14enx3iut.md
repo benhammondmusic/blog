@@ -40,7 +40,7 @@ Don't change the capitalization of your files once they are git committed!
 git mv wrongCapitalization.jsx CorrectCapitalization.jsx
 ```
 
-###  The Harder Way To Fix IT That I Figured Out
+###  The Harder Fix I Used
 
 Change the offending file(s) to a totally new filename by prepending some nonsense to the filename, commit and push, then change file back to correct name, commit, and push again. In my case, it was ```models/Reportcard.js``` locally and in my code references, but still ```models/ReportCard.js``` on the deployed remotes.
 
