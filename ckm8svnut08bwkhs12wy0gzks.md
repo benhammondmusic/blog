@@ -5,13 +5,13 @@ A quick guide to assist our project team in getting our group project deployed t
 ### These were the issues causing failed deploys:
 
 - the .git repo and the package.json need to both be on the floor of your project. I copied all the files out of the inner folder using ```cp -r /gigboard-Api/. /```, and then deleted the inner folder. Command courtesy of [this Stack Overflow](https://stackoverflow.com/questions/20192070/how-to-move-all-files-including-hidden-files-into-parent-directory-via)
-- the PORT needed to be assigned dynamically: Instead of PORT = 3001, we needed to use ```const PORT = process.env.PORT || 3001``` which lets Heroku choose the correct port, and our local machine to use 3001.
-- the Index.js model needed to be lowercase index.js to be able to reference it elsewhere by using ./Models/ ... it doesn't seem to recognize the uppercase Index as being the default file in that folder. I needed to fix using the weird capitalization trick, naming it a 3rd weird name, committing, and then changing back to the proper capitalization and committing
+- the PORT needed to be assigned dynamically: Instead of PORT = 3001, we needed to use ```const PORT = process.env.PORT || 5000``` which lets Heroku choose the correct port, and our local machine to use 5000. I chose 5000 here because that seems to be where ```heroku local web``` (an alternative to running ```nodemon```) is looking by default.
+- the ```Index.js``` model needed to be lowercase ```index.js``` to be able to reference it elsewhere by using ```./Models/```      It doesn't seem to recognize the uppercase ```Index``` as being the default file in that folder. I needed to fix using the weird capitalization trick, naming it a unique 3rd weird name (I used ```XXXindex.js```), committing, and then changing back to the proper capitalization (```index.js```) and committing
 - we needed to merge develop into main. I did that on GitHub, but that will need to be done again every time we want the new changes reflected on the deployed web app. 
 
 ### To deploy the backend to your Heroku
 
-_in browser_
+_first in browser_
 
 - visit [heroku.com/apps](https://dashboard.heroku.com/apps) and login if needed
 - click dropdown "new" and then "create new app"
@@ -19,7 +19,25 @@ _in browser_
 - click "deploy" option in the nav bar
 - mostly follow the [Deploy using Heroku Git] section, but I'll spell out the changes below.
 
-_in your command line_
+_then in VSCode_
+
+- open your ```package.json``` and scroll until you find the *scripts* entry:
+```
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+```
+
+I am not yet implementing any tests, so I just replaced the test key:value line with a line that will point Node to our main file ```server.js```. 
+```
+  "scripts": {
+    "start": "node server.js"
+  },
+```
+
+If you wanted to include multiple lines you could, just be sure each key:value pair is separated by a comma. *Important*: since this is .json it seems you can NOT have a trailing comma, as you might in a regular JavaScript object. In the same way, be sure to keep that comma after the scripts object closing squirrely brace ```}``` if there are more entries in your ```package.json```, (there probably are). Lastly, do not place any comments  inside of these .json objects, you'll have a bad time.
+
+_lastly in your command line_
 
 - navigate to your backend folder, and make sure you're on your main branch.
 - ```git pull```
