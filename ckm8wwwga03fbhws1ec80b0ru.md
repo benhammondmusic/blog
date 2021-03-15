@@ -1,4 +1,4 @@
-## Deploying our React team project to Heroku
+## Deploying a React App to Heroku
 
 This guide is step #2, written to assist my group in getting our team's full stack app deployed. This post will focus on the React frontend; to get a Node backend deployed to Heroku first, please follow [my other post](https://benhammond.tech/deploying-our-team-project-backend-to-heroku). 
 
