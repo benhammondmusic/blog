@@ -1,6 +1,6 @@
-## Deploying Our Team Project Backend to Heroku
+## Deploying a Node / Express Backend to Heroku
 
-A quick guide to assist our project team in getting our group project deployed to each member's individual Heroku app. This guide is step 1; to deploy your React frontend to Heroku,  [checkout my part 2 post](https://benhammond.tech/deploying-our-react-team-project-to-heroku) . 
+A quick guide to assist in getting our group project deployed to each member's individual Heroku apps. This guide is step 1; to deploy your React frontend to Heroku,  [checkout my part 2 post](https://benhammond.tech/deploying-our-react-team-project-to-heroku) . 
 
 ### These were the issues causing failed deploys:
 
