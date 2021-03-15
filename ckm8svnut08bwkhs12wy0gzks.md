@@ -1,12 +1,12 @@
 ## Deploying Our Team Project Backend to Heroku
 
-A quick guide to assist our project team in getting our group project deployed to each member's individual Heroku app. This guide is step 1, to deploy your React frontend to Heroku,  [checkout my part 2 post](https://benhammond.tech/deploying-our-react-team-project-to-heroku) . 
+A quick guide to assist our project team in getting our group project deployed to each member's individual Heroku app. This guide is step 1; to deploy your React frontend to Heroku,  [checkout my part 2 post](https://benhammond.tech/deploying-our-react-team-project-to-heroku) . 
 
 ### These were the issues causing failed deploys:
 
 - the .git repo and the package.json need to both be on the floor of your project. I copied all the files out of the inner folder using ```cp -r /gigboard-Api/. /```, and then deleted the inner folder. Command courtesy of [this Stack Overflow](https://stackoverflow.com/questions/20192070/how-to-move-all-files-including-hidden-files-into-parent-directory-via)
 - the PORT needed to be assigned dynamically: Instead of ```PORT = 3001```, we needed to use ```const PORT = process.env.PORT || 5000``` which lets Heroku choose the correct port, and our local machine to use 5000. I chose 5000 here because that seems to be where ```heroku local web``` (an alternative to running ```nodemon```) is looking by default.
-- the ```Index.js``` model needed to be lowercase ```index.js``` to be able to reference it elsewhere by using ```../Models/```      It doesn't seem to recognize the uppercase ```Index``` as being the default file in that folder. I needed to fix using the weird capitalization trick, naming it a unique 3rd weird name (I used ```XXXindex.js```), committing, and then changing back to the proper capitalization (```index.js```) and committing
+- the ```Index.js``` model needed to be lowercase ```index.js``` to be able to reference it elsewhere by using ```../Models/```      It doesn't seem to recognize the uppercase ```Index``` as being the default file in that folder. I needed to fix using the weird capitalization trick, naming it a unique 3rd weird name (I used ```XXXindex.js```), committing, and then changing back to the proper capitalization (```index.js```) and committing. Read more about this bug and how to fix it in [this blog post](https://benhammond.tech/dont-change-the-capitalization-of-your-filenames)
 - we needed to merge develop into main. I did that on GitHub, but that will need to be done again every time we want the new changes reflected on the deployed web app. 
 
 ### To deploy the backend to your Heroku
