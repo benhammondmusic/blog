@@ -40,7 +40,6 @@ _first in browser_
 - click "deploy" option in the nav bar
 - click "settings" in the nav bar, scroll down to the "Buildpacks" section and click the button on the right "Add buildpack"
 - a modal will pop up, and you'll want to paste ```https://github.com/mars/create-react-app-buildpack.git``` into the input and click "save changes"
-- the rest is similar to [Deploy using Heroku Git] section, but with important changes noted below
 
 ![Screen Shot 2021-03-15 at 11.54.13 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1615874276634/GZ7FFzHSu.png)
 
