@@ -10,7 +10,7 @@ mv gigboard/gigboard-client/* gigboard/
 # extract hidden files (those starting with dots) from the inner folder
 mv gigboard/gigboard-client/.* gigboard/
 ```
-- Also like the backend issues, we needed to replace the hard-coded API address with one that could work both in development on our local machines and in production after being deployed to Heroku. Using process.env is a great way to do this, as it allows your code to determine the current environment. Heroku automatically will set ```process.env.NODE_ENV``` set to the string "production". To setup the alternate local development URL, you once again create a .env file, add the following line, and save: 
+- Also like the backend issues, we needed to replace the hard-coded API address with one that could work both in development on our local machines and in production after being deployed to Heroku. Using process.env is a great way to do this, as it allows your code to determine the current environment. Heroku automatically will set ```process.env.NODE_ENV``` set to the string "production" in the deployed *production* app. To setup the alternate local *development* URL, you once again create a .env file, add the following line, and save: 
 ```
 # inside your local .env file, which is gitignored
 NODE_ENV='development'
@@ -21,14 +21,14 @@ let API_URL;
 if (process.env.NODE_ENV === 'development') {
   API_URL = 'http://localhost:5000';
 } else if (process.env.NODE_ENV === 'production') {
-  API_URL = 'https://ben-gigboard.herokuapp.com';
+  API_URL = 'https://{{{YOUR-BACKEND}}}.herokuapp.com';
 }
 ```
-I used port 5000 because that seemed to be where ```heroku local web``` was serving the backend; if you'll be using nodemon you may want to use 3001 or whatever you've coded into your local backend development server. I found this 5000 vs 3001 issue because I was getting a ```net::ERR_CONNECTION_REFUSED``` error in the dev tools. 
+I used port 5000 because that seemed to be where ```heroku local web``` was serving the backend; if you'll be using nodemon you'll want to use whatever you've coded into your local backend development server. I found this 5000 vs 3001 issue because I was getting a ```net::ERR_CONNECTION_REFUSED``` error in the dev tools. 
 
 - I needed to delete the yarn lock file; not sure why that was there but Heroku didn't like having it and a package lock file at the same time. 
 
-- I spent a lot of time researching getting *two* distinct .git repos to both push to a single Heroku app. I couldn't remember seeing Adonis do this for sure, and [the link he provided](https://hackmd.io/0pMhDK66T6W2dkDv4UfH2g?view) didn't work as it was using ```heroku create``` which attempts to create a new app. I ended up giving up on trying for a single deployed app, and decided for sake of finally sleeping to just deploy this front end to a 2nd, separate Heroku app. The following process is almost the same as  [my first post on deploying backend](https://benhammond.tech/deploying-our-team-project-backend-to-heroku) .  
+- I spent a lot of time researching getting *two* distinct .git repos to both push to a single Heroku app. I couldn't remember if we were wanting this for sure, and [the link he provided](https://hackmd.io/0pMhDK66T6W2dkDv4UfH2g?view) didn't work as it was using ```heroku create``` which attempts to create a new app. I ended up giving up on trying for a single deployed app, and decided for sake of finally sleeping to just deploy this front end to a 2nd, separate Heroku app. The following process is almost the same as  [my first post on deploying backend](https://benhammond.tech/deploying-our-team-project-backend-to-heroku) .  
 
 ### To deploy the React frontend to a 2nd Heroku app
 
@@ -37,9 +37,13 @@ _first in browser_
 - visit [heroku.com/apps](https://dashboard.heroku.com/apps) and login if needed
 - click dropdown "new" and then "create new app"
 - choose an available name that no one else on heroku has used; i used "gig-board" and then click "create app"
-- we each need to add the correct backend API address to Heroku via the website interface: clicking "settings" and scrolling down to "Config Vars". These are like the deployed version of what's locally stored in your .env file. You need to paste the exact string ```REACT_APP_API_URL``` into the KEY field, and paste the production API url into the VALUE box; in our case we can use my Heroku deployment of our backend. Use your own if you have it working: ```https://ben-gigboard.herokuapp.com```
 - click "deploy" option in the nav bar
-- mostly follow the [Deploy using Heroku Git] section with changes noted below
+- click "settings" in the nav bar, scroll down to the "Buildpacks" section and click the button on the right "Add buildpack"
+- a modal will pop up, and you'll want to paste ```https://github.com/mars/create-react-app-buildpack.git``` into the input and click "save changes"
+- the rest is similar to [Deploy using Heroku Git] section, but with important changes noted below
+
+![Screen Shot 2021-03-15 at 11.54.13 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1615874276634/GZ7FFzHSu.png)
+
 
 _then in your command line_
 
