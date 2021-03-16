@@ -59,7 +59,7 @@ _then in your command line_
 - ```git push heroku main```
 - cross your toes and your eyes and wait until you hopefully see ```remote: Verifying deploy... done```. This took significantly longer than the backend to deploy for me.
 - type ```heroku open``` and view your majestic nav bar.
-- We are still getting some CORS issues; we will need to adjust our backend settings to allow for whichever frontend is requesting connections.
+
 
 
 
