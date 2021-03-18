@@ -17,10 +17,10 @@ Players take turns lobbing projectiles; anyone sustaining a hit is destroyed. La
 
 ## Tech:
 
-    - HTML
-    - CSS / Bootstrap
-    - JavaScript / jQuery
-    - HTML Canvas / jCanvas
+- HTML
+- CSS / Bootstrap
+- JavaScript / jQuery
+- HTML Canvas / jCanvas
 
 ## Approach:
 
