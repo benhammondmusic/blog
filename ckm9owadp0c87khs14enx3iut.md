@@ -1,7 +1,7 @@
 ## Don't Change the Capitalization of Your Filenames!
 
 
-> TLDR; `git mv problemFile.jsx ProblemFile.jsx` any time you re-capitalize a file 
+> TLDR; `git mv problemFile.jsx ProblemFile.jsx` any time you adjust uppercase / lowercase of committed file names 
 
 
 
