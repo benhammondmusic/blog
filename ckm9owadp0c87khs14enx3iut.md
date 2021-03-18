@@ -1,10 +1,17 @@
 ## Don't Change the Capitalization of Your Filenames!
 
+
+> TLDR; `git mv problemFile.jsx ProblemFile.jsx` any time you re-capitalize a file 
+
+
+
 This problem popped up for me on my first ever time deploying to Heroku: [Family Friendly](https://benhammond-familyfriendly.herokuapp.com), an Express/EJS app mapping the availability of baby-changing tables for caretakers of all genders. What a first experience... hours and hours of endlessly debugging and messing with settings I had no real idea about (maybe it needs a different version of Node? maybe it's missing a config variable? maybe Microsoft is sabotaging me as retribution for all the nasty things I've said about Internet Explorer in the past?!?!) Thankfully, my instructor [Adonis](adonismartin.com) had encountered this issue before and set me on the right course towards fixing it. 
 
 ### The Problem
 
-The problem occurs when a file that is already git-committed is renamed, but only with changes to its capitalization. These changes are remembered by macOS, but *not* by git, and therefor those filename changes will not be pushed to GitHub, Heroku, or any other remote deployments you've set up for your .git repo. However, changes to filename references _in your code_ will be committed and pushed, causing the error. Confusingly, the app will work great on your local machine, so this makes debugging the error all the more difficult.
+The problem occurs when a file that is already git-committed is renamed, but only with changes to its capitalization (lowercase / Uppercase). These changes are remembered by macOS, but *not* by git (which is case-insensitve), and therefor those filename changes will not be pushed to GitHub, Heroku, or any other remote deployments you've set up for your .git repo. However, changes to filename references _in your code_ will be committed and pushed, causing the error. Confusingly, the app will work great on your local machine, so this makes debugging the error all the more difficult. Even more confusingly, VSCode will re-capitalize the file in editor seemingly at random!
+
+<iframe src="https://giphy.com/embed/3oEjHRfTZ5JDDX05fW" width="480" height="267" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 In my specific case, I had used a model for a report card. As is best practice, I capitalized the Model name, and also followed Javascript's camelCasing standard for multiple word variable names, and used the filename ```ReportCard.js```. Later, I had a change of heart, and decided a report-card was more easily considered a single term, and changed the model name and all references to it in my code to be ```Reportcard.js```. In my code, this occured several places but one example was in my ```models/index.js``` file, which imports all my Models and exports them to a single reference point: 
 ```
