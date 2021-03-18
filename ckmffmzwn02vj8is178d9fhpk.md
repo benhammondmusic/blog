@@ -81,7 +81,8 @@ Animation was also problematic; converting my static drawing loops into smooth a
 
 ### Story / Game Ethics
 
-- One aspect that has bothered me from the start was being responsible for yet another violence-based game. Since this project was ideated and completed within one week, I ended up continuing with the initial warfare theme in the interest of completing it on time. Further thought and the onset of Colorado winter sparked what I hope will be the next era in this game: Snowmen! We already have some great Rocky Mt terrain in the game, and I hope to replace the tanks with Snowmen (different colored accessories to denote player), and adjusting the tanks' turrets will be replaced with tilting back your Snowman's head (indicated by the angle of his carrot nose). <iframe src="https://giphy.com/embed/8mFNIn8y6kZNK" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+- One aspect that has bothered me from the start was being responsible for yet another violence-based game. Since this project was ideated and completed within one week, I ended up continuing with the initial warfare theme in the interest of completing it on time. Further thought and the onset of Colorado winter sparked what I hope will be the next era in this game: Snowmen! We already have some great Rocky Mt terrain in the game, and I hope to replace the tanks with Snowmen (different colored accessories to denote player), and adjusting the tanks' turrets will be replaced with tilting back your Snowman's head (indicated by the angle of his carrot nose). <iframe src="https://giphy.com/embed/FZiXDhzZJmHzq" width="480" height="313" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
 
 ## Resources
 
