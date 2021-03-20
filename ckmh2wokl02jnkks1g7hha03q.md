@@ -23,6 +23,8 @@ https://youtu.be/A9KrWzgH9Ok
 - If the band already has a gig that day but at a different time/venue, Songkick questions you. This program assumes it's correct (that you have 2 shows the same day) and continues to submit the second gig.
 - If the gig has already been added (same date/time/venue) Songkick alerts you, and this program does NOT add the duplicate gig.
 
+https://youtu.be/v2cHNFsxHFY
+
 ## FUTURE IDEAS:
 
 - Create a deployed React user interface, and run Python script on a deployed backend server, allowing use of the app from anywhere.
