@@ -1,6 +1,6 @@
 ## GigUploader
 
-# GIG UPLOADER
+# GigUploader
 
 > Automate gig promotion by programmatically submitting to multiple online event services. User inputs details into a local .xls spreadsheet, and the data is uploaded publicly to Songkick, BandsInTown, Strumsy, and privately to Dubsado. Further integration propagates this information to Spotify, Google, a user's Google Calendar, and many more locations.
 
