@@ -12,7 +12,7 @@ As a musician, it is vital to keep the public aware of your upcoming shows. Ther
 
 **Write some code that does it automatically!**
 
-https://youtu.be/A9KrWzgH9Ok
+%[https://youtu.be/A9KrWzgH9Ok]
 
 ## PROCESS:
 
@@ -23,7 +23,7 @@ https://youtu.be/A9KrWzgH9Ok
 - If the band already has a gig that day but at a different time/venue, Songkick questions you. This program assumes it's correct (that you have 2 shows the same day) and continues to submit the second gig.
 - If the gig has already been added (same date/time/venue) Songkick alerts you, and this program does NOT add the duplicate gig.
 
-https://youtu.be/v2cHNFsxHFY
+%[https://youtu.be/v2cHNFsxHFY]
 
 ## FUTURE IDEAS:
 
