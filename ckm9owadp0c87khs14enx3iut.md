@@ -5,7 +5,7 @@
 
 
 
-This problem popped up for me on my first ever time deploying to Heroku: [Family Friendly](https://benhammond-familyfriendly.herokuapp.com), an Express/EJS app mapping the availability of baby-changing tables for caretakers of all genders. What a first experience... hours and hours of endlessly debugging and messing with settings I had no real idea about (maybe it needs a different version of Node? maybe it's missing a config variable? maybe Microsoft is sabotaging me as retribution for all the nasty things I've said about Internet Explorer in the past?!?!) Thankfully, my instructor [Adonis](adonismartin.com) had encountered this issue before and set me on the right course towards fixing it. 
+This problem popped up for me on my first ever time deploying to Heroku: [Family Friendly](https://blog.benhammond.tech/familyfriendly), an Express/EJS app mapping the availability of baby-changing tables for caretakers of all genders. What a first experience... hours and hours of endlessly debugging and messing with settings I had no real idea about (maybe it needs a different version of Node? maybe it's missing a config variable? maybe Microsoft is sabotaging me as retribution for all the nasty things I've said about Internet Explorer in the past?!?!) Thankfully, my instructor [Adonis](adonismartin.com) had encountered this issue before and set me on the right course towards fixing it. 
 
 ### The Problem
 
