@@ -1,4 +1,4 @@
-## 🎸 The BTAR Is Back, Buddy!!! 🖥️
+## 🎸 The BTAR Is Back!!! 🖥️
 
 # BTAR 3000 - More Than Just A Keyboard
 
