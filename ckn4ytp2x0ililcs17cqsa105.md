@@ -1,4 +1,4 @@
-## Reviewing Comp. Sci. Concepts by Actually Writing Code
+## Studying CompSci by Actually Writing Code
 
 > Often the best way to learn isn't by watching a JavaScript influencer or by reading theory in a decades old book. It is simply using the tools you have to build the thing you want, and filling in the knowledge gaps as you go!
 
