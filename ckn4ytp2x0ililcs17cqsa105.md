@@ -110,5 +110,5 @@ const binary = (searchItem, sortedArray) => {
 exports.binary = binary;
 ```
 
-As much as I hope you enjoyed reading this, I'd love even more to hear form you if you have gone ahead and implemented any classic data structures and algorithms in your language of choice! Please let me know in the comments if you have, and any things you learned or suggestions you have for me in my learning process. Next step: **merge sort** using **Python**~
+As much as I hope you enjoyed reading this, I'd love even more to hear from you if you have gone ahead and implemented any classic data structures and algorithms in your language of choice! Please let me know in the comments if you have, and any things you learned or suggestions you have for me in my learning process. Next step: **merge sort** using **Python**
 
