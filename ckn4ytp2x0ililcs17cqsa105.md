@@ -7,14 +7,14 @@ There are many ways of learning coding concepts: watching endless YouTube videos
 1. _it actually works_
 2. _I actually understand why_
 
-I am personally not a fan of using CodePen or similar as a sandboxed coding environment. They have their role, but it seems too far removed from my actual development process and I'd rather have my intellisense, my extensions, and my git and GitHub integration to track and record my progress.
+I am personally not a fan of using CodePen or similar as a sandboxed coding environment; it seems too far removed from my actual development process and I'd rather have my intellisense, my extensions, and my git and GitHub integration to track and record my progress. That being said, if you are still pretty new to coding and don't already have a workflow in place that allows you to write code and then view the output easily, CodePen is an extremely helpful tool.
 
 After watching the video tutorials on sorting and searching algorithms, I began implementing my own versions. I made some decisions early on to get started:
 - I would use JavaScript since that is the language I'm currently most experienced in. For my next data structure / algorithm implementation, I may use Python instead for the hands-on experience of this other language I'm learning.
 - I would use VSCode as my editor, which provides lots of guidance on syntax, formatting, etc. but without making it feel like I was just completing someone else's tutorial.
 - I would execute my JS files using Node locally, and specifically run the programs with `nodemon` which is a great way to reflect saved changes without having to kill your process and restart every time you make a change. Since this code exercise was for me alone, having a fancy GUI via HTML/React wasn't important, at least to start. I would love to implement my own visualization of the sorting and searching process myself, as those have been helpful tools for me in this process.
 
-<iframe src="https://giphy.com/embed/KETFJXwXzMOeGFUvPT" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe align="center" src="https://giphy.com/embed/KETFJXwXzMOeGFUvPT" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 ## Bubble Sort
 
