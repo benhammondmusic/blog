@@ -1,5 +1,7 @@
 ## Reviewing Comp. Sci. Concepts by Actually Writing Code
 
+> Often the best way to learn isn't by watching a JavaScript influencer or by reading theory in a decades old book. It is simply using the tools you have to build the thing you want, and filling in the knowledge gaps as you go!
+
 In the computer science courses I took during college (go McGill!), the overwhelming focus was on _theory_, while practical applications were few and far between. This is understandable in terms of a classical University approach, however it was often frustrating feeling like I had learned all this theory yet had nothing tangible I could really show for it. To the contrary, GA (the bootcamp I am currently attending) jumps right in with JavaScript and only after months of creating actual, deployed full stack web apps are we beginning to touch on basic computer science concepts like data structures (e.g. linked lists), and algorithms (e.g. merge sort, bubble sort, binary search). These are provided in the form of extra modules to be completed independently, separate from actual course work. This is surely due to the fact that modern web development handles many of these low-level concepts automatically (dynamically adding to arrays, build in search methods, etc), and a developer could go their entire career never facing these questions outside of technical interviews. Like most things, the perfect balance of these two extremes will depend on the individual student, and their goals.
 
 There are many ways of learning coding concepts: watching endless YouTube videos, asking a mentor or instructor how to do it, sifting through StackOverflow threads, and many more. However, in my experience the most productive way to truly absorb something is to jump in and start writing code. For me personally, this means firing up VSCode and clicking away until:
@@ -7,18 +9,18 @@ There are many ways of learning coding concepts: watching endless YouTube videos
 1. _it actually works_
 2. _I actually understand why_
 
-I am personally not a fan of using CodePen or similar as a sandboxed coding environment; it seems too far removed from my actual development process and I'd rather have my intellisense, my extensions, and my git and GitHub integration to track and record my progress. That being said, if you are still pretty new to coding and don't already have a workflow in place that allows you to write code and then view the output easily, CodePen is an extremely helpful tool.
+I am personally not a fan of using CodePen or similar as a sandboxed coding environment; it seems too far removed from my actual development process and I'd rather have my intellisense, my extensions, and my git and GitHub integration to track and record my progress. That being said, if you are still pretty new, CodePen is an amazing tool to easily whip up some code and start working. I think once we, as devs, have our systems and workflows in place, we forget just how difficult it was to even enter the space and get everything configured properly.
 
 After watching the video tutorials on sorting and searching algorithms, I began implementing my own versions. I made some decisions early on to get started:
 - I would use JavaScript since that is the language I'm currently most experienced in. For my next data structure / algorithm implementation, I may use Python instead for the hands-on experience of this other language I'm learning.
 - I would use VSCode as my editor, which provides lots of guidance on syntax, formatting, etc. but without making it feel like I was just completing someone else's tutorial.
 - I would execute my JS files using Node locally, and specifically run the programs with `nodemon` which is a great way to reflect saved changes without having to kill your process and restart every time you make a change. Since this code exercise was for me alone, having a fancy GUI via HTML/React wasn't important, at least to start. I would love to implement my own visualization of the sorting and searching process myself, as those have been helpful tools for me in this process.
 
-<iframe align="center" src="https://giphy.com/embed/KETFJXwXzMOeGFUvPT" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe src="https://giphy.com/embed/KETFJXwXzMOeGFUvPT" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 ## Bubble Sort
 
-Bubble Sort has a fun name, a pretty approachable implantation, and a pretty poor execution speed compared to some sorting alternative. The `Big(O) time complexity` of Bubble Sort is `O(n²)`, which means that as the size of of the values to sort increases, the processing time will increase **exponentially*. You don't have to be a math major to understand that's pretty bad. However, it's a great place to start because it's fairly easy to understand exactly what is happening in a bubble sort:
+Bubble Sort has a fun name, a pretty approachable implantation, and a pretty poor execution speed compared to some sorting alternative. The `Big(O) time complexity` of Bubble Sort is `O(n²)`, which means that as the size of of the values to sort increases, the processing time will increase **exponentially**. You don't have to be a math major to understand that's pretty bad. However, it's a great place to start because it's fairly easy to understand exactly what is happening in a bubble sort:
 - start at the beginning of your collection of unsorted items
 - compare the 1st and the 2nd item; swap them if needed so that they are in order
 - repeat this 1 to 1 comparison with the now 2nd and 3rd items, the now 3rd and 4th items, etc until you reach the end of your collection
@@ -111,4 +113,7 @@ exports.binary = binary;
 ```
 
 As much as I hope you enjoyed reading this, I'd love even more to hear from you if you have gone ahead and implemented any classic data structures and algorithms in your language of choice! Please let me know in the comments if you have, and any things you learned or suggestions you have for me in my learning process. Next step: **merge sort** using **Python**
+
+![bubble sort binary search.gif](https://cdn.hashnode.com/res/hashnode/image/upload/v1617660088179/5p1Il3bLT.gif)
+
 
