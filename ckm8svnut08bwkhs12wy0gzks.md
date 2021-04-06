@@ -1,6 +1,6 @@
 ## Deploying a Node / Express Backend to Heroku
 
-A quick guide to assist in getting our group project deployed to each member's individual Heroku apps. This guide is step 1; to deploy your React frontend to Heroku,  [checkout my part 2 post](https://benhammond.tech/deploying-our-react-team-project-to-heroku) . 
+A quick guide to assist in getting our group project deployed to each member's individual Heroku apps. This guide is step 1; to deploy your React frontend to Heroku,  [checkout my part 2 post](https://blog.benhammond.tech/deploying-a-react-app-to-heroku), and to finalize the connections  [check out part 3](https://blog.benhammond.tech/connecting-your-deployed-frontend-backend-and-mongodb-atlas-database) .
 
 ### These were the issues causing failed deploys:
 
