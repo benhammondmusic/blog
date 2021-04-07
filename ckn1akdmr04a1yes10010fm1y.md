@@ -1,3 +1,11 @@
 ## Don't Hit CMD-SHIFT-R While Blogging!!!
 
-undefined
+This was a pretty dumb moment for me. Weeks ago I had finished up my  [React-Tac-Toe](https://blog.benhammond.tech/react-tac-toe)  project and had make some screen recordings and screenshots that I'd posted to this blog as placeholders for a more detailed future post. Tonight, I decided to dedicate some time to fleshing out the post, and spend a decent hour crafting the article and selecting the perfect memes. 😹
+
+<iframe src="https://giphy.com/embed/c75P5qZDepH7ZbFTTK" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+Just upon finishing, and seconds before hitting the "save" button to publish my updates to the existing article, I decided to _up my game_ by inserting an emoji using  [Rocket](https://matthewpalmer.net/rocket/)  which I had recently installed on my MacBook Pro. Since it was newly installed, I couldn't quite remember the shortcut for triggering emojis (turns out it's colon plus whatever term you're looking for, kind of like on Slack: `:joy-cat`)
+
+> It is *NOT* `CMD-SHIFT-R`, `CMD-R`, or anything remotely like that. 
+
+Some of you are already cringing, because as developers you know that those key combos will refresh and hard-refresh your webpage. It immediately cleared ALL of the work I'd done in the last hour, and I saw just the screen recording that was posted previously. No worries I thought; my awesome blog host Hashnode auto-saves drafts as you're typing them! Well... it does... but apparently only for new posts; I was making updates to an _older_ post. I checked my drafts folder just in case, but it was empty. I then attempted to start working on it again, and somehow my internet went out through my entire house. This was the internet telling me to go to bed, in case you were wondering. I did not, and I finished [the article](https://blog.benhammond.tech/react-tac-toe) AND managed to write this one as well, in hopes one of you fellow bloggers might avoid the same fate. UX-wise I understand; you don't necessarily want your edits to overwrite in real-time. Perhaps there's a compromise where it auto-saves to a draft revision, and upon save you can incorporate all of those changes. Made me wish I was blogging in VSCode with `git` for version control!!! Anyways, don't be like me... save your edits in chunks as you go, and don't press CMD+RANDOM KEYS to see if it's the right one lol.
