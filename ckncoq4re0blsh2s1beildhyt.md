@@ -45,4 +45,7 @@ Another issue with the logic involved the tie condition; there were two ways we 
 
 I truly enjoy working in groups, and in particular pair-programming exercises. Being able to have one person "think" through their typing, while the other can theorize more abstractly, and even go off to google for deeper research without interrupting the coding flow. Obviously another key benefit is simply having more eyeballs on your code; as long as communication is good and you aren't second-guessing each other too often, you can exterminate bugs before they even take hold, saving hours if not days of frustration. I look forward to continuing collaboration with fellow member of my General Assembly cohort, during the remainder of this course and long after. 
 
+Photo in cover image by <a href="https://unsplash.com/@sidverma?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sid Verma</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+
 
