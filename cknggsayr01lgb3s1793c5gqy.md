@@ -4,7 +4,7 @@ Having created a **stack** using a linked list in Python (more details in  [my p
 
 ## Big Picture
 
-A stack is a collection of data where items are added and removed according to the "LIFO" acronym: _Last In, First Out_. Meaning, the very last item that was pushed to the stack with the be the very first one to be popped off. I think of it like a Pez dispenser.
+A stack is a collection of data where items are added and removed according to the "LIFO" acronym: _Last In, First Out_. Meaning, the last item that was pushed to the stack will be the first one to be popped off. I think of it like a Pez dispenser.
 
 <iframe src="https://giphy.com/embed/NmovCS9E8pVcY" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
