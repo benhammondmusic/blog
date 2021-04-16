@@ -76,7 +76,7 @@ Create a second app within this project called **main_app**
 Let Django know about your 2nd app:
 - Open the project in VSCode: `code .`
 - Open your project settings, mine is: `pedalcollector_project/settings.py`
-- Scroll down to `Installed_Apps` and add `main_app`
+- Scroll down to `Installed_Apps` and add `main_app,` as the new first element in the array. Remember the comma!
 ![Adding main_app screenshot](https://cdn.hashnode.com/res/hashnode/image/upload/v1618548443970/aAONZQhrq.png)
 
 ## Development Server
