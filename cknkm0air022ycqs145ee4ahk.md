@@ -1,6 +1,6 @@
 ## Django - Getting Started
 
-_**This post was co-authored with fellow General Assembly Software Engineering Immersive member [JC Coles](https://jctech.blog/)**_
+_**This post was co-authored with fellow General Assembly Software Engineering Immersive member [JC Coles](https://jctech.blog/), following some custom suggestions from our instructor Adonis **_
 
 If you've written full stack applications in JavaScript using Node, Express, perhaps Mongoose for accessing a database, maybe some packages like Passport to help manage user authentication and authorization, etc, you quickly find yourself repeating the same setup patterns over and over. The only differences come in when you accidentally misconfigure a setting or a route and spend hours debugging. Django aims to, if not _replace_ all of those steps, at least condense those disparate processes into one. 
 
