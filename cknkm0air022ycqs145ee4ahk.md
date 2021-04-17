@@ -35,6 +35,9 @@ Create a postgres database.
 
 > My example is for a "pedalboard"; you can change the terms written inside triple squirrely brackets: `{{{XYZ}}}` to be whatever makes sense for your own project.
 
+
+![jonathan-dubon-yEE68_6Z2Qo-unsplash.jpeg](https://cdn.hashnode.com/res/hashnode/image/upload/v1618687017464/sGk8LuLtN.jpeg)
+
 ## Dependencies 
 
 Install Django and dependencies. Psycopg2 helps Python interact with your postgres DB (similar to how Mongoose allowed Node to easily interact with MongoDB)
@@ -182,7 +185,8 @@ You should now have a functioning (very simple) Django app within your project, 
 - Deploying your Django app on Heroku _(blog post currently being written)_
  
 
-__Photo by <a href="https://unsplash.com/@tateisimikito?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jukan Tateisi</a> on <a href="https://unsplash.com/collections/1342728/climbing?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>__
+__Cover Photo by <a href="https://unsplash.com/@tateisimikito?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jukan Tateisi</a> on <a href="https://unsplash.com/collections/1342728/climbing?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>__
+__Pedalboard Photo by <a href="https://unsplash.com/@jondubon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jonathan Dubon</a> on <a href="https://unsplash.com/s/photos/pedalboard?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>__
   
 
 
