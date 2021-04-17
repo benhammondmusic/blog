@@ -11,6 +11,8 @@ The following step-by-step guide will assist a beginning Python developer in lau
 2. `source .env/bin/activate`
 3. `pip3 install -r requirements.txt`
 4. `python3 manage.py migrate`
+5. `python3 manage.py runserver`
+6. Visit [localhost:8000](http://localhost:8000) in your browser
 
 # Django Environment Setup (New Project)
 
