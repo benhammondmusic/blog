@@ -31,9 +31,9 @@ Activate it
 ## Database
 
 Create a postgres database. 
-- `createdb {{{pedalcollector}}}` 
+- `createdb {{{pedalboard}}}` 
 
-> My example is for a "pedal collector"; you can change the terms written inside triple squirrely brackets: `{{{XYZ}}}` to be whatever makes sense for your own project.
+> My example is for a "pedalboard"; you can change the terms written inside triple squirrely brackets: `{{{XYZ}}}` to be whatever makes sense for your own project.
 
 ## Dependencies 
 
@@ -55,7 +55,7 @@ Django _projects_ can contain multiple Django _apps_.
 ## New Project
 
 Create a new project
-- `django-admin startproject {{{pedalcollector}}} .` 
+- `django-admin startproject {{{pedalboard}}} .` 
 
 Make a git ignore file
 - `touch .gitignore`
@@ -77,7 +77,7 @@ Create a second app within this project called **main_app**
  
 Let Django know about your 2nd app:
 - Open the project in VSCode: `code .`
-- Open your project settings, mine is: `pedalcollector_project/settings.py`
+- Open your project settings, mine is: `pedalboard_project/settings.py`
 - Scroll down to `Installed_Apps` and add `main_app,` as the new first element in the array. Remember the comma!
 ![Adding main_app screenshot](https://cdn.hashnode.com/res/hashnode/image/upload/v1618548443970/aAONZQhrq.png)
 
@@ -94,7 +94,7 @@ Configure project for postgres by changing the final property of your engine val
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pedalcollector',
+        'NAME': 'pedalboard',
     }
 }
 ```
@@ -134,7 +134,7 @@ urlpatterns = [
 > Using an empty string `""` as the first parameter in `path()` is telling Django to route the base URL with no added paths to the home view (e.g. `your-project.com/` Later we will add more routes, for example using `"about/"` as the first argument in the new route, and linking that to an `about` page, which the user will access by going to `your-project.com/about`
 
 Now, include this new file in the existing project’s urls.py
-- Open `{{{YOUR_PROJECT}}}/urls.py` (on mine it is `pedalcollector/urls.py`)
+- Open `{{{YOUR_PROJECT}}}/urls.py` (on mine it is `pedalboard/urls.py`)
 - Add a new item to the `urlpatterns` array, making sure the items are separated by commas
 - Also you will need to import the `include` function before calling it in the array
 - It will end up looking like this:
