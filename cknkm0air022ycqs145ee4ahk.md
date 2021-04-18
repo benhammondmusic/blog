@@ -76,7 +76,7 @@ Create a second app within this project called **main_app**
 
 > If you're having issues, make sure:
 - you included the ` .` at the end of the start project command
-- you might need to use the command `python` instead of `python3`; this seemed to occur on newer Macs or machines where `python --version` and `python3 --version` both referenced the same release of Python
+- you might need to use the command `python` instead of `python3`; this seemed to occur on newer Macs or machines where `python --version` and `python3 --version` both referenced the same release of Python. The error popping up was a `raise ImportError` with the message `couldn't import django no module found`
  
 Let Django know about your 2nd app:
 - Open the project in VSCode: `code .`
