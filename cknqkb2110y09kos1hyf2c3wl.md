@@ -96,7 +96,7 @@ First, one of the big benefits to using classes as we have above is that each of
 
 To import one file into another, you simply need to use the `import` statement (as opposed to JavaScript you must explicitly `export` as well, or Node.js where the equivalent is `require` and `module.exports`.
 
-# Performance
+# Performance and Big O()
 
 I've seen it recommended to make your table about 30% larger than your data set when storing in a hash table; this is a good starting point to minimize wasted resources (either having the table too large and with lots of empty locations taking up room in memory, or the table too small and containing many collisions, which makes it operate more slowly). I therefor send in the `TABLE_SIZE` as a calculated argument using this line: `TABLE_SIZE = int(len(data) * 1.3)`
 
