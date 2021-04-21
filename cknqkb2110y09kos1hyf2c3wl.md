@@ -7,11 +7,11 @@ Until last night I really didn't understand hash tables. I've watched videos and
 Understanding a new concept is often frustrating as the resources you reference might include unfamiliar terminology. Even worse are the circular definitions where they “explain” one term you don’t know by using 3 other terms you also have never heard of. Here is a brief run down of the key elements of a hash map and how they relate to one another:
 
 - **Hash (Hash Function)**: a process of converting an item (or _value_) into a _key_ (or location index) in a predictable way; in this case determining a table location based on some property of the item that needs to be stored there
--**Hash Map**: a data structure that stores items efficiently by using a **hash** function to determine items locations
--**Hash Table**: an implementation of a **Hash Map** that specifically uses a table-like structure (as opposed to another type of data structure)
--**Collision**: when your **Hash** function assigns the same location to multiple items
--**Probing**: one way of resolving a collision: iterate through the rest of your table (looping around to the beginning if needed) until you find a new, open location for the item that caused the collision
--**Chaining**: another way of resolving a collision; insert the new colliding item into the location along with the existing item(s), and chain them together using a linked list or similar sub-structure
+- **Hash Map**: a data structure that stores items efficiently by using a **hash** function to determine items locations
+- **Hash Table**: an implementation of a **Hash Map** that specifically uses a table-like structure (as opposed to another type of data structure)
+- **Collision**: when your **Hash** function assigns the same location to multiple items
+- **Probing**: one way of resolving a collision: iterate through the rest of your table (looping around to the beginning if needed) until you find a new, open location for the item that caused the collision
+- **Chaining**: another way of resolving a collision; insert the new colliding item into the location along with the existing item(s), and chain them together using a linked list or similar sub-structure
 
 # Getting Started
 
