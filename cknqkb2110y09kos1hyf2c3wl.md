@@ -106,7 +106,7 @@ A properly hashed table should be _nearly_ as fast as a simple array since the v
 
 # More To Come...
 
-This implementation is very simple, as my goal was simply to get it working. The hash algorithm I chose simply sums the ascii value of a string's characters, and then chops it down until that number will fit inside the table. There are many other ways to hash, in ways that optimize performance and manage required space in memory. I'm excited to have a basic version up and going, and a much more complete mental model of what is happening. I plan to continue implementing these data structures and algorithms, and would love to hear from you if you have any comments, corrections or feedback. Thanks for reading! 
+This implementation is very simple, as my goal was really to _just to get it working_. The hash algorithm I chose sums the ascii value of a string's characters, and then chops it down with a `%` (modulus) until that number will fit inside the table. There are many other ways to hash, in ways that optimize performance and manage required space in memory. I'm excited to have this basic version up and going, and a much more complete mental model of what is happening. I plan to continue implementing these data structures and algorithms, and would love to hear from you if you have any comments, corrections or feedback. Thanks for reading! 
 
 To view the code or suggest changes, [visit the GitHub repo](https://github.com/benhammondmusic/hash_table). 
 
