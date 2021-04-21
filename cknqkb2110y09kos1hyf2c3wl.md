@@ -91,12 +91,12 @@ def contains(self, item):
 
 # Testing our Hash Map
 
-First, one of the big benefits to using classes as we have above is that each of these class definitions can live in its own `.py` file, and can be easily imported into other files and scripts as needed. So for this project I have 3 files:
-1. `hash_table.py` - contains our new hash map class which utilizes a table and stacks internally
-2. `linked_list_stack.py` - contains our `Stack` class and the very simple `Node` class which is used within our linked list stack
-3. `test.py` - which starts with some arbitrary data, instantiates an object of class `Hash_Map()`, then adds, searches for and removes various data from that structure. 
+One big benefit to using classes comes when keeping class definitions in their own `.py` files. They can easily be imported into other files and scripts as needed. For this project, I am using 3 files:
+1. `hash_table.py` - contains our new hash map class, utilizing a table full of stacks internally
+2. `linked_list_stack.py` - contains our `Stack` class and the very simple `Node` class, which is used within our linked list stack
+3. `test.py` - starts with some arbitrary data; instantiates an object of class `Hash_Map()`; then adds, searches for and removes various data from that structure
 
-To import one file into another, you simply need to use the `import` statement (as opposed to JavaScript you must explicitly `export` as well, or Node.js where the equivalent is `require` and `module.exports`.
+To import one file into another, you simply need to use the `import` statement (as opposed to JavaScript where you must explicitly `export` as well, or Node.js where import is `require` and export is `module.exports`).
 
 # Performance and Big O()
 
