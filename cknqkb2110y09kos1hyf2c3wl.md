@@ -34,6 +34,9 @@ The classes I used in my implementation were pretty limited:
 ## Functionality
 
 ### Brainstorming
+
+<iframe src="https://giphy.com/embed/JUSzU4js22LDdmbX6c" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pbskids-dinosaur-pbs-kids-train-JUSzU4js22LDdmbX6c">via GIPHY</a></p>
+
 I find it helpful to sketch out all of the functionality I can think of that might be needed for each user story. Sometimes it's 1-to-1, but often a story might contain several steps that can be broken down. In my case, all of these _functions_ will technically be _methods_ since they will exist as properties of the classes I defined above. Some of these **class methods** will be _public_ and accessible directly by the user, while others will be _private_ and simply accessed internally by other **class methods**. 
 
 To start, I often just create empty placeholder functions which log their own name:
