@@ -34,14 +34,16 @@ The classes I used in my implementation were pretty limited:
 ## Functionality
 
 ### Brainstorming
-I find it helpful to sketch out all of the functionality I can think of that might be needed for each user story. Sometimes it's 1-to-1, but often a story might contain several steps that can be broken down. In my case, all of these _functions_ will technically be _methods_ since they will exist as properties of the classes I defined above. Some of these **class methods** will be _public_ and accessible directly by the user, while others will be _private_ and simply accessed internally by other **class methods**. To start, I often just create empty functions (or methods if I know which class they will belong in) and simply have the function log its own name:
+I find it helpful to sketch out all of the functionality I can think of that might be needed for each user story. Sometimes it's 1-to-1, but often a story might contain several steps that can be broken down. In my case, all of these _functions_ will technically be _methods_ since they will exist as properties of the classes I defined above. Some of these **class methods** will be _public_ and accessible directly by the user, while others will be _private_ and simply accessed internally by other **class methods**. 
+
+To start, I often just create empty placeholder functions which log their own name:
 ``` python
 def hash(self, value):
      # placeholder method - but this will eventually do something cool!
      print(f'Hash')
      return
 ```
-Once I start to flush out those functions, I'll write the steps out in `#comments` to be sure my logic makes sense. Another step to take is to log out any arguments the function with some descriptive text: `print(f'Hash(): hashing {value}"). Once these are logging properly, it's easy to start using real data in your tests, and you can more quickly isolate any errors as being in the business logic rather than the routing or setup.
+When I start to flush out those functions, I'll write out the steps in `#comments` to visualize my logic flow. Another helpful step is to log any passed arguments with some descriptive text: `print(f'Hash(): hashing {value}"). Once these are logging properly, it's easy to start using real data in your tests, and you can more quickly isolate any errors as being in the business logic rather than in the routing or setup.
 
 # Class Methods of Hash_Map()
 
