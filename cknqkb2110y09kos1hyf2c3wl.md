@@ -1,10 +1,10 @@
 ## Build a Hash Map in Python
 
-Until last night I really didn't understand hash tables. I've watched videos and read about them computer science textbooks, but some part of my brain always said "this is confusing and not something I really need to understand.... too many words ... too many weird terms.... ignore for now". I’m pretty sure I vaguely (and wrongly) thought the items themselves were split apart into chunks and somehow distributed throughout a structure. So I decided it was finally time to dig in and figure it out, and as in my previous posts about studying computer science concepts by coding, the best way to learn it to **actually write some code**. This blog is **NOT** intended to help you have your own hashmap epiphany; instead it will serve as a way for me to document my thought process and code implementation in hopes it might assist both of us in learning. 
+Until last night I really didn't understand hash tables. I've watched videos and read about them computer science textbooks, but some part of my brain always said "this is confusing and not something I really need to understand.... too many words ... too many weird terms.... ignore for now". I’m pretty sure I vaguely (and wrongly) thought the items themselves were split apart into chunks and somehow distributed throughout a structure. So I decided it was finally time to dig in and figure it out, and as in my previous posts in this series [studying computer science concepts by coding](https://blog.benhammond.tech/series/comp-sci-coding), the best way to learn it to **actually write some code**. This blog is **not** intended to help you have your own hashmap epiphany; instead it will serve as a way for me to document my thought process and code implementation in hopes it might assist both of us in learning. 
 
 # Some Terminology
 
-Understanding a new concept is often frustrating as the resources you reference might include unfamiliar terminology. Even worse are the circular definitions where they “help” you by explaining one term you don’t know by using 3 other terms you also have never heard of. Here is a brief run down of the key elements of a hash map and how they relate to one another:
+Understanding a new concept is often frustrating as the resources you reference might include unfamiliar terminology. Even worse are the circular definitions where they “explain” one term you don’t know by using 3 other terms you also have never heard of. Here is a brief run down of the key elements of a hash map and how they relate to one another:
 
 - **Hash (Hash Function)**: a process of converting an item (or _value_) into a _key_ (or location index) in a predictable way; in this case determining a table location based on some property of the item that needs to be stored there
 -**Hash Map**: a data structure that stores items efficiently by using a **hash** function to determine items locations
@@ -15,13 +15,13 @@ Understanding a new concept is often frustrating as the resources you reference 
 
 # Getting Started
 
-I personally start these computer science coding exercises the same way I start my web application projects: by writing my **user stories**. What exactly will I, as a user of this data structure, want it to do? Once I have these stories in place, I start to determine what **classes** I might use to best represent the entities in involved. Finally, it's a matter of creating **methods** for the relevant *classes* that will allow me, as a user, to interact with this object. The final step is creating a `test.py` program that can instantiate this class, and then test its functionality by walking through the execution of each of my user stories. I look forward to learning more about Jest and other similar automated testing tools to improve this part of my process.
+I personally start these computer science coding exercises the same way I start my web application projects: by writing my **user stories**. What exactly will I, as a user of this data structure, want it to do? Once I have these stories in place, I start to determine what **classes** I might use to best represent the entities involved. Finally, it's a matter of creating **methods** for the relevant *classes* that will allow me, as a user, to interact with this object. The final step is creating a test program that can instantiate this class and test its functionality by walking through the execution of each user story. I look forward to learning more about Jest, PyTest, and other similar automated testing tools to improve this part of my process.
 
 ## User Stories
 
 These are the basic things someone would want a hash map to do:
 - accept a value and store it using a hash function
-- inform whether a value is present in the map or not
+- inform you whether a value is present in the map or not
 - remove a particular value from the map (if it is present)
 
 ## Classes
