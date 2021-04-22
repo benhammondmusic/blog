@@ -1,4 +1,4 @@
-## Build a Hash Map in Python
+## Building a Hash Map in Python
 
 Until last night I really didn't understand hash tables. I've watched videos and read about them computer science textbooks, but some part of my brain always said "this is confusing and not something I really need to understand.... too many words ... too many weird terms.... ignore for now". I’m pretty sure I vaguely (and wrongly) thought the items themselves were split apart into chunks and somehow distributed throughout a structure. So I decided it was finally time to dig in and figure it out, and as in my previous posts in this series [studying computer science concepts by coding](https://blog.benhammond.tech/series/comp-sci-coding), the best way to learn it to **actually write some code**. This blog is **not** intended to help you have your own hashmap epiphany; instead it will serve as a way for me to document my thought process and code implementation in hopes it might assist both of us in learning. 
 
