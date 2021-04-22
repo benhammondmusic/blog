@@ -13,6 +13,9 @@ Understanding a new concept is often frustrating as the resources you reference 
 - **Probing**: one way of resolving a collision: iterate through the rest of your table (looping around to the beginning if needed) until you find a new, open location for the item that caused the collision
 - **Chaining**: another way of resolving a collision; insert the new colliding item into the location along with the existing item(s), and chain them together using a linked list or similar sub-structure
 
+
+![hash table diagram showing an array as a table, and collision of items at the same address chained together with a linked list](https://cdn.hashnode.com/res/hashnode/image/upload/v1619068202133/LD6Ljh3qP.png)
+
 # Getting Started
 
 I personally start these computer science coding exercises the same way I start my web application projects: by writing my **user stories**. What exactly will I, as a user of this data structure, want it to do? Once I have these stories in place, I start to determine what **classes** I might use to best represent the entities involved. Then, it's a matter of creating **methods** for the relevant *classes* that will allow me, as a user, to interact with this object. The final step is creating a test program that can instantiate this class and test its functionality by walking through the execution of each user story. I look forward to learning more about Jest, PyTest, and other similar automated testing tools to improve this part of my process.
