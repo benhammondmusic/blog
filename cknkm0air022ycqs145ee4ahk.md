@@ -33,8 +33,11 @@ Activate it
 Create a postgres database. 
 - `createdb {{{pedalboard}}}` 
 
-> My example is for a "pedalboard"; you can change the terms written inside triple squirrely brackets: `{{{XYZ}}}` to be whatever makes sense for your own project.
+> My example is for a "pedalboard"; you can change the terms written inside triple squirrely brackets: `{{{XYZ}}}` to be whatever makes sense for your own project. 
 
+> If you have weird errors while testing things and somehow perhaps have corrupt data in your database, you can easily remove and re-add the database with the following commands in your terminal:
+1. `dropdb {{{database name}}}`
+2. `createdb {{{database name}}}`
 
 ![jonathan-dubon-yEE68_6Z2Qo-unsplash.jpeg](https://cdn.hashnode.com/res/hashnode/image/upload/v1618687017464/sGk8LuLtN.jpeg)
 
