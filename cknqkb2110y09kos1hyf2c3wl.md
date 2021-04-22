@@ -13,8 +13,7 @@ Understanding a new concept is often frustrating as the resources you reference 
 - **Probing**: one way of resolving a collision: iterate through the rest of your table (looping around to the beginning if needed) until you find a new, open location for the item that caused the collision
 - **Chaining**: another way of resolving a collision; insert the new colliding item into the location along with the existing item(s), and chain them together using a linked list or similar sub-structure
 
-
-![hash table diagram showing an array as a table, and collision of items at the same address chained together with a linked list](https://cdn.hashnode.com/res/hashnode/image/upload/v1619068202133/LD6Ljh3qP.png)
+![hash table: a diagram showing an array as a table, and collision of items at the same address chained together with a linked list](https://cdn.hashnode.com/res/hashnode/image/upload/v1619110286045/1PcMLAYeP.png)
 
 # Getting Started
 
