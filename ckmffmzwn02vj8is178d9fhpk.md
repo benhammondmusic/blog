@@ -1,7 +1,10 @@
 ## Tanks!
 
-> Multiplayer, animated artillery game in JavaScript, JQuery, and HTML Canvas; built in one week.
+> Multiplayer, animated artillery game in JavaScript, jQuery, and HTML Canvas; built in one week.
 Incorporated programmatically generated terrain and destruction when collision detected, gravity for tank placement, scalable multiplayer mode, and responsive, accessible design. [Play Tanks!](https://benhammondmusic.github.io/tanks)
+
+
+![tanks - short sample screen recording of gameplay.gif](https://cdn.hashnode.com/res/hashnode/image/upload/v1619281752875/HjGbnPgOR.gif)
 
 ## Concept:
 
@@ -103,5 +106,6 @@ Animation was also problematic; converting my static drawing loops into smooth a
 
 ## App Demo
 
-- [Play Game on GitHub Pages](https://benhammondmusic.github.io/tanks)
+- [Play Game (Netlify deployment)](https://tanks-js.netlify.app/)
+- [Play Game (backup GitHub Pages deployment)](https://benhammondmusic.github.io/tanks)
 - [GitHub Repo](https://github.com/benhammondmusic/benhammondmusic.github.io/tree/main/tanks)
