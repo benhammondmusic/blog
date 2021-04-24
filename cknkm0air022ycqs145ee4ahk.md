@@ -10,11 +10,14 @@ The following step-by-step guide will assist a beginning Python developer in lau
 1. `python3 -m venv .env`
 2. `source .env/bin/activate`
 3. `pip3 install -r requirements.txt`
-    - if your project contains environmental variables, create a .env file inside your inner project folder `touch {{{your_project}}}/.env` (in my app it's `touch pedalcollector_project/.env`
-    - add all your env variable declarations in this new file and save
 4. `python3 manage.py migrate`
 5. `python3 manage.py runserver`
 6. Visit [localhost:8000](http://localhost:8000) in your browser
+
+> Having issues?
+- if your project contains environmental variables, add them to an `.env` file inside your inner project folder (mine is `pedalcollector_project/.env`)
+- try reseting your database (you'll lose anything you've added so be careful!) `DROPDB {{{your_database}}}` and `CREATEDB {{{your_database}}}`
+
 
 # Django Environment Setup (New Project)
 
