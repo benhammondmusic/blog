@@ -17,6 +17,7 @@ The following step-by-step guide will assist a beginning Python developer in lau
 > Having issues?
 - if your project contains environmental variables, add them to an `.env` file inside your inner project folder (mine is `pedalcollector_project/.env`)
 - try reseting your database (you'll lose anything you've added so be careful!) `DROPDB {{{your_database}}}` and `CREATEDB {{{your_database}}}`
+- in settings.py, to run locally you'll need `DEBUG=True`; to deploy you'll have to change to `DEBUG=False`
 
 
 # Django Environment Setup (New Project)
