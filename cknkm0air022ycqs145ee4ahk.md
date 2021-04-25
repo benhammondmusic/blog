@@ -36,7 +36,7 @@ Activate it
 
 ## Database
 
-Create a postgres database. 
+Create a postgres database. _You'll need this exact name again soon, so write it in your project notes somewhere you'll remember._
 - `createdb {{{pedalboard}}}` 
 
 > My example is for a "pedalboard"; you can change the terms written inside triple squirrely brackets: `{{{XYZ}}}` to be whatever makes sense for your own project. 
@@ -54,6 +54,8 @@ Install Django and dependencies. Psycopg2 helps Python interact with your postgr
 - `pip3 install Django`
 - `pip3 install psycopg2`
 > if that didn’t work run: `psycopg2-binary`. 
+- `pip3 install python-decouple`
+> please note there is a difference between _python_decouple_ and _decouple_, you need the former.
 
 Record those settings: _requirements.text_ is the Django equivalent of your Node app's _package.json_, informing everyone what settings and packages must be configured to function.
 - `pip3 freeze > requirements.txt`
@@ -74,9 +76,40 @@ Make a git ignore file
 
 Specify the files and folders to ignore
 - Open the blank `.gitignore` file in VSCode
-- add the line `.env`
 
 > For a comprehensive `.gitignore` file like you might get from a create-react-app, you can visit [gitignore.io](https://gitignore.io) and select _Django_. This will generate a complete file for you: [click to view Django .gitignore](https://www.toptal.com/developers/gitignore/api/django)
+
+- Whether you build your gitignore or copy and paste from the site above, be sure it includes the following items:
+```
+# this hidden folder contains your local, virtual environment
+.env
+
+# this hidden file contains sensitive keys and environmental config vars 
+{{{your_project}}}/.env
+```
+
+
+## Setting Up Environmental Variables
+
+- open `settings.py`
+- scroll down to the line that declares the `SECRET_KEY=`, and **cut** the entire line (CMD+x)
+- open the newly created `{{{your_project}}}/.env` file (it should be currently empty)
+- paste in the secret key from above, but be sure to remove the empty spaces around the `=` and remove all quotes from the value after the `=`. You could also use any random secret string you like. It should end up looking like this:
+```
+# take this secret key out of settings.py and put it here (removing any quotes)
+SECRET_KEY={{{your_secret_key}}}
+# this is the database name you used at the beginning of this setup; I told you to write it down somewhere... did you? 
+DATABASE_NAME=littlecabin-db
+```
+
+## Reading In Env Variables
+
+Now, we want to make our app read these sensitive or configuration dependent variables, whether it is in production (e.g. deployed to Heroku) or development (working locally on your own computer). To read variables from the `.env` file you created and filled in the last step:
+
+- where you removed the `SECRET_KEY` line in **settings.py**, add back this line which will now read it dynamically (from your .env locally or your deployed config vars): `SECRET_KEY = config('SECRET_KEY')`
+- add `from decouple import config` at the top of your **settings.py** (right below the existing import)
+
+
 
 ## Main App
 
@@ -101,22 +134,22 @@ Start up the development server on your local machine
 
 ## Development Database
 
-Configure project for postgres by changing the final property of your engine value to `.postgresql`,  and adding your project name to the ‘NAME’ entry:
+Configure the project for postgres by changing the database entry in **settings.py**, and reading the database name as an environmental variable.
 ```
+# new database info
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pedalboard',
+        'NAME': config('DATABASE_NAME'),
     }
 }
 ```
 
 ## Migrations
 
-Stage the db migrations (kind of like `git add .` but for changes to the database schema as the app evolves over time
-- `python3 manage.py makemigrations`
-Make those migrations (kind of like `git commit` but you don't have to rack your brain for a meaningful commit message)
-- `python3 manage.py migrate`
+Stage the db migrations (kind of like git adding and committing, but for changes to the database schema as the app evolves over time
+- `python3 manage.py makemigrations` (this probably won't do anything)
+- `python3 manage.py migrate` (this should run through the models in the app like the built in users, and add this info to your database)
 
 Restart your server (you can do this regularly while debugging)
 - kill the process using `<CONTROL> + C`
@@ -133,7 +166,7 @@ Routes are defined in the `urls.py` file(s); you _could_ add all of your routes 
 - Open the newly created file in VSCode
 - Set up the imports and basic route using the code below:
 
-```
+``` python
 from django.urls import path
 from . import views
 
@@ -151,7 +184,7 @@ Now, include this new file in the existing project’s urls.py
 - Also you will need to import the `include` function before calling it in the array
 - It will end up looking like this:
 
-```
+``` python
 from django.contrib import admin
 # from django.urls import path
 # add include to your imports from django.urls
@@ -166,9 +199,20 @@ urlpatterns = [
 
 ## Add a home view
 
-Now that the home _route_ knows where to direct the client, you need to make a home _view_ to be displayed there. Starting very simply, you'll create the `home.html` file
+Now that the home _route_ knows where to direct the client, you need to make a home _view_ as a connector between the current route and the correct template to render. Open up your **views.py** and add the following method:
+```
+def home(request):
+    return render(request, 'home.html')
+```
+
+## Add a home template
+
+Starting very simply, you'll create the `home.html` file
+- `mkdir main_app/templates`
 - `touch main_app/templates/home.html` 
 - Open `home.html` in VSCode and paste in some valid HTML as a starting point:
+
+> Tip: to save a step, in VSCode you could right click on **main_app** in the navigation bar, and select "New File", and then add the line `templates/home.html`. This will create the templates folder and also the html file in one command
 
 ```
 <!DOCTYPE html>
@@ -181,6 +225,8 @@ Now that the home _route_ knows where to direct the client, you need to make a h
     </body>
 </html>
 ```
+
+
 
 Back in your browser, visit [localhost:8000](http://localhost:8000) and refresh to view your sweet new home page. If it doesn't work, remember to restart your Django server:
 - in terminal: `<CONTROL> + C`
