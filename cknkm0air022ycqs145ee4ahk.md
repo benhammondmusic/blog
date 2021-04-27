@@ -45,8 +45,6 @@ Create a postgres database. _You'll need this exact name again soon, so write it
 1. `dropdb your-app-db`
 2. `createdb your-app-db`
 
-![jonathan-dubon-yEE68_6Z2Qo-unsplash.jpeg](https://cdn.hashnode.com/res/hashnode/image/upload/v1618687017464/sGk8LuLtN.jpeg)
-
 ## Dependencies 
 
 Install Django and dependencies. Psycopg2 helps Python interact with your postgres DB (similar to how Mongoose allowed Node to easily interact with MongoDB)
