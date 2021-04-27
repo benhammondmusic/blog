@@ -95,9 +95,13 @@ your-app_project/.env
 - open `settings.py`
 - scroll down to the line that declares the `SECRET_KEY=`, and **cut** the entire line (CMD+x)
 - open the newly created `your-app_project/.env` file (it should be currently empty)
-- paste in the secret key from above, but be sure to remove the empty spaces around the `=` and remove all quotes from the value after the `=`. You could also use any random secret string you like. It should end up looking like this:
+- paste in the secret key from above, but be sure to remove the empty spaces around the `=` and remove all quotes from the value after the `=`. You could also use any random secret string you like
+- add in `DEBUG=True` on a new line
+
+Your .env file should end up looking like this:
+
 ```
-# take this secret key out of settings.py and put it here (removing any quotes)
+DEBUG=True
 SECRET_KEY={{{your_secret_key}}}
 # this is the database name you used at the beginning of this setup; I told you to write it down somewhere... did you? 
 DATABASE_NAME=your-app-db
@@ -107,9 +111,12 @@ DATABASE_NAME=your-app-db
 
 Now, we want to make our app read these sensitive or configuration dependent variables, whether it is in production (e.g. deployed to Heroku) or development (working locally on your own computer). To read variables from the `.env` file you created and filled in the last step:
 
+- open **settings.py**
+- add `from decouple import config` at the top (right below the existing import)
 - where you removed the `SECRET_KEY` line in **settings.py**, add back this line which will now read it dynamically (from your .env locally or your deployed config vars): `SECRET_KEY = config('SECRET_KEY')`
-- add `from decouple import config` at the top of your **settings.py** (right below the existing import)
-
+- scroll to the line that says `DEBUG=True` and replace the line with `DEBUG=config('DEBUG')`
+- below, replace the line with `ALLOWED_HOSTS` with `ALLOWED_HOSTS = ['herokuapp.com','.localhost', '127.0.0.1', '[::1]']`
+> If you will be deploying this somewhere else, replace Heroku with your actual app URL
 
 
 ## Main App
