@@ -2,7 +2,7 @@
 
 In the previous [Django - Getting Started](https://blog.benhammond.tech/django-getting-started) post, we set up a new Django app, basically creating a fullstack Python `Hello World`.
 
-In this post, we will deploy this very basic app to Heroku (a free hosting platform which can run a Django server among many other types of web services). There are _many_ ways to deploy Django, but not a single tutorial I've found online actually worked for me as written. Therefor, I've collected the process that finally did the trick and have outlined it below. A lot of the process comes from our bootcamp instructors, with some customization found several layers deep on Stack Overflow and Reddit (and eventually some personal manipulation). Please let me know if this works for you, and comment below if you have any questions!
+In this post, we will deploy this very basic app to Heroku (a free hosting platform which can run a Django server along with other types of web services). There are _many_ ways to deploy Django, but not a single tutorial I've found online actually worked for me as written. Therefor, I've collected the process that finally did the trick and have outlined it below. A lot of the process comes from our bootcamp instructors, with some customization found several layers deep on Stack Overflow and Reddit (and eventually some personal manipulation). Please let me know if this works for you, and comment below if you have any questions!
 
 # Deploy Process
 
