@@ -1,10 +1,10 @@
 ## Django - Getting Started
 
-_**This post was co-authored with fellow General Assembly Software Engineering Immersive member [JC Coles](https://jctech.blog/), following some custom suggestions from our instructor Adonis **_
+_**This post was co-authored with fellow General Assembly Software Engineering Immersive member [JC Coles](https://jctech.blog/), following some custom suggestions from our instructor Adonis **_. Also, check out the entire ["Getting Started with Django" Series](https://blog.benhammond.tech/series/django)
 
 If you've written full stack applications in JavaScript using Node, Express, perhaps Mongoose for accessing a database, maybe some packages like Passport to help manage user authentication and authorization, etc, you quickly find yourself repeating the same setup patterns over and over. The only differences come in when you accidentally misconfigure a setting or a route and spend hours debugging. Django aims to, if not _replace_ all of those steps, at least condense those disparate processes into one. 
 
-The following step-by-step guide will assist a beginning Python developer in launching a Django project on their local development server (and then deploying it to Heroku in the next blog post).
+The following step-by-step guide will assist a beginning Python developer in launching a Django project on their local development server (and then [deploying it to Heroku in the next blog post](https://blog.benhammond.tech/deploying-django-to-heroku)).
 
 > If you’re starting a brand new project, skip this section. Otherwise if you are downloading someone else’s project, run the following commands instead to properly configure it on your machine. This is the equivalent of running `npm i` when freshly cloning someone else's repo. When finished, continue at step "Creating a Home Page" below
 1. `python3 -m venv .env`
