@@ -44,6 +44,7 @@ Create a postgres database. _You'll need this exact name again soon, so write it
 > If you have weird errors while testing things and somehow perhaps have corrupt data in your database, you can easily remove and re-add the database with the following commands in your terminal:
 1. `dropdb your-app-db`
 2. `createdb your-app-db`
+3. `python manage.py createsuperuser`
 
 ## Dependencies 
 
