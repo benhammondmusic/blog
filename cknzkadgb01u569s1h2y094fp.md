@@ -58,8 +58,7 @@ Why re-invent the wheel? Someone already got all this cool stuff working; use it
 
 - `heroku config:set DISABLE_COLLECTSTATIC=1` - prevents a problem I couldn't figure out
 - `heroku config:set DATABASE_NAME=your-app` - add your actual app name (the part before the `_project`)
-- `heroku config:set DEBUG=False`
-> IMPORTANT! This doesn't seem to actually set DEBUG to False in the production app; this is likely a security risk... if anyone knows how to fix this please comment; otherwise I will update once I figure it out.
+- `heroku config:set ENVIRONMENT=production`
 - `heroku config:set SECRET_KEY=whatever_your_secret_key_is` 
 
 ## Push to Production
