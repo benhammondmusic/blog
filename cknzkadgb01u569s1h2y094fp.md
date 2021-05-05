@@ -78,7 +78,7 @@ Now, you'll tunnel in to the Heroku server with your command line, so you can se
 ## See If It Works!
 
 - `heroku open` will launch the site in a browser.
-> If you have problems, typing `heroku logs --tail` will let your terminal log all sorts of difficult to decipher messages, including some that will help you figure out what's wrong. To exit this logging feature, use `CTRL+C`
+> If you have problems, typing `heroku logs --tail` will let your terminal log all sorts of difficult to decipher messages, including some that will help you figure out what's wrong. To exit this logging feature, use `CTRL+C`. To view more helpful errors, follow the instructions on this [stackoverflow](https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django) where they explain adding `DEBUG_PROPAGATE_EXCEPTIONS = True` and a `LOGGING = { ... }` library to their `settings.py`. You may also need to run `python3 manage.py collectstatic` in your terminal with your project's virtual environment activated before git committing and redeploying. 
 
 <iframe src="https://giphy.com/embed/dIxkmtCuuBQuM9Ux1E" width="480" height="240" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
