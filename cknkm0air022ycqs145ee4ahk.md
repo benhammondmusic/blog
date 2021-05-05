@@ -17,7 +17,8 @@ The following step-by-step guide will assist a beginning Python developer in lau
 > Having issues?
 - if your project contains environmental variables, add them to an `.env` file inside your inner project folder (mine is `pedalcollector_project/.env`)
 - try reseting your database (you'll lose anything you've added so be careful!) `DROPDB {{{your_database}}}` and `CREATEDB {{{your_database}}}`
-- in settings.py, to run locally you'll need `DEBUG=True`; to deploy you'll have to change to `DEBUG=False`
+- in settings.py, to run locally you'll want `DEBUG=True`; to deploy securely you'll have to change to `DEBUG=False`. I manually set an env variable in each environment and then `DEBUG` will be set automatically.
+
 
 
 # Django Environment Setup (New Project)
@@ -100,7 +101,7 @@ your-app_project/.env
 Your .env file should end up looking like this:
 
 ```
-DEBUG=True
+ENVIRONMENT=development
 SECRET_KEY={{{your_secret_key}}}
 # this is the database name you used at the beginning of this setup; I told you to write it down somewhere... did you? 
 DATABASE_NAME=your-app-db
@@ -113,7 +114,13 @@ Now, we want to make our app read these sensitive or configuration dependent var
 - open **settings.py**
 - add `from decouple import config` at the top (right below the existing import)
 - where you removed the `SECRET_KEY` line in **settings.py**, add back this line which will now read it dynamically (from your .env locally or your deployed config vars): `SECRET_KEY = config('SECRET_KEY')`
-- scroll to the line that says `DEBUG=True` and replace the line with `DEBUG=config('DEBUG')`
+- scroll to the line that says `DEBUG=True` and replace with the following block: 
+```
+if config('ENVIRONMENT') == "production":
+    DEBUG=False
+if config('ENVIRONMENT') == "development":
+    DEBUG=True
+```
 - below, replace the line with `ALLOWED_HOSTS` with `ALLOWED_HOSTS = ['herokuapp.com','.localhost', '127.0.0.1', '[::1]']`
 > If you will be deploying this somewhere else, replace Heroku with your actual app URL
 
