@@ -1,7 +1,7 @@
 ## Don't Change the Capitalization of Your Filenames!
 
 
-> use `git mv problemFile.jsx ProblemFile.jsx` if you swap UpperCase and lowercase letters in gig-committed file names 
+> use `git mv PRobLEmFiLe.jsx ProblemFile.jsx` . In this case `PRobLEmFiLe.jsx` is the old, incorrectly capitalized file, and `ProblemFile.jsx` is the updated capitalization. If this isn't working, scroll down for a lengthier, manual way.
 
 
 
