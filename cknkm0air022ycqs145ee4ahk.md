@@ -33,6 +33,13 @@ Create and navigate into a new folder that will contain your entire project
 - `mkdir your_cool_thing`
 - `cd your_cool_thing`
 
+## Setup Local Git Repo
+
+- `git init`
+- `git add .`
+- `git commit -m "initialize a cool thing"
+- optionally connect to a remote Github repo at this point
+
 ## Virtual Environment
 
 Create a virtual environment
