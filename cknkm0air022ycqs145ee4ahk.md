@@ -38,13 +38,13 @@ Activate it
 ## Database
 
 Create a postgres database. _You'll need this exact name again soon, so write it in your project notes somewhere you'll remember._
-- `createdb your-app-db` 
+- `createdb example-db` 
 
-> `your-app-db` is the example I'll be using; you can use whatever you want throughout this post, just be consistent!
+> `example-db` is the example I'll be using; you can use whatever you want throughout this post, just be consistent!
 
 > If you have weird errors while testing things and somehow perhaps have corrupt data in your database, you can easily remove and re-add the database with the following commands in your terminal:
-1. `dropdb your-app-db`
-2. `createdb your-app-db`
+1. `dropdb example-db`
+2. `createdb example-db`
 3. `python manage.py createsuperuser`
 
 ## Dependencies 
@@ -69,7 +69,7 @@ Django _projects_ can contain multiple Django _apps_.
 ## New Project
 
 Create a new project
-- `django-admin startproject your-app .` 
+- `django-admin startproject example .` 
 
 Make a git ignore file
 - `touch .gitignore`
@@ -86,7 +86,7 @@ Specify the files and folders to ignore
 .env
 
 # this hidden file contains sensitive keys and environmental config vars 
-your-app_project/.env
+example_project/.env
 ```
 
 
@@ -94,7 +94,7 @@ your-app_project/.env
 
 - open `settings.py`
 - scroll down to the line that declares the `SECRET_KEY=`, and **cut** the entire line (CMD+x)
-- open the newly created `your-app_project/.env` file (it should be currently empty)
+- open the newly created `example_project/.env` file (it should be currently empty)
 - paste in the secret key from above, but be sure to remove the empty spaces around the `=` and remove all quotes from the value after the `=`. You could also use any random secret string you like
 - add in `DEBUG=True` on a new line
 
@@ -104,7 +104,7 @@ Your .env file should end up looking like this:
 ENVIRONMENT=development
 SECRET_KEY={{{your_secret_key}}}
 # this is the database name you used at the beginning of this setup; I told you to write it down somewhere... did you? 
-DATABASE_NAME=your-app-db
+DATABASE_NAME=example-db
 ```
 
 ## Reading In Env Variables
@@ -136,7 +136,7 @@ Create a second app within this project called **main_app**
  
 Let Django know about your 2nd app:
 - Open the project in VSCode: `code .`
-- Open your project settings: `your-app_project/settings.py`
+- Open your project settings: `example_project/settings.py`
 - Scroll down to `Installed_Apps` and add `main_app,` as the new first element in the array. Remember the comma!
 ![Adding main_app screenshot](https://cdn.hashnode.com/res/hashnode/image/upload/v1618548443970/aAONZQhrq.png)
 
@@ -174,7 +174,7 @@ Restart your server (you can do this regularly while debugging)
  
 ## Add a `home` route
 
-Routes are defined in the `urls.py` file(s); you _could_ add all of your routes to `your-app_project/urls.py`, but it is best practice for each Django app to define its own and include a link to the new URLs file in the project's URLconf:
+Routes are defined in the `urls.py` file(s); you _could_ add all of your routes to `example_project/urls.py`, but it is best practice for each Django app to define its own and include a link to the new URLs file in the project's URLconf:
 
 - `touch main_app/urls.py`
 - Open the newly created file in VSCode
@@ -193,7 +193,7 @@ urlpatterns = [
 > Using an empty string `""` as the first parameter in `path()` is telling Django to route the base URL with no added paths to the home view (e.g. `your-project.com/` Later we will add more routes, for example using `"about/"` as the first argument in the new route, and linking that to an `about` page, which the user will access by going to `your-project.com/about`
 
 Now, include this new file in the existing project’s urls.py
-- Open `your-app_project/urls.py`
+- Open `example_project/urls.py`
 - Add a new item to the `urlpatterns` array, making sure the items are separated by commas
 - Also you will need to import the `include` function before calling it in the array
 - It will end up looking like this:
