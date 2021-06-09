@@ -7,7 +7,7 @@ In this post, we will deploy this very basic app to Heroku (a free hosting platf
 # Deploy Process
 
 ## Get Ready
-- Load up your terminal and `cd` into the floor of your Django project. Running the command `ls` should your `requirements.txt`, `manage.py`, `main_app` folder, and `your-app_project`, amongst several others. My example is below (some of these files will be created in the following steps)
+- Load up your terminal and `cd` into the floor of your Django project. Running the command `ls` should your `requirements.txt`, `manage.py`, `main_app` folder, and `example_project`, amongst several others. My example is below (some of these files will be created in the following steps)
 
 ![Screen Shot of terminal showing example files at floor level](https://cdn.hashnode.com/res/hashnode/image/upload/v1619496779439/qetCJyLwD.png)
 
@@ -23,7 +23,7 @@ This file will tell Heroku what actions to take when it receives a web request:
 > ensure the capitalization is exact on Procfile; if you accidentally mixed the casing up you can fix it using [this method I wrote about](https://blog.benhammond.tech/renaming-your-github-projects)
 - open the new `Procfile` in VSCode, add and save this line (subbing in your own project folder name; the one that ends with `_project`):
 ```
-web: gunicorn your-app_project.wsgi
+web: gunicorn example_project.wsgi
 ```
 
 ## Runtime
@@ -47,8 +47,8 @@ Why re-invent the wheel? Someone already got all this cool stuff working; use it
 - `pip3 freeze > requirements.txt`
 
 ## Deploy
-- `heroku create your-app --buildpack heroku/python`
-> This will try and create a Heroku project with the URL **your-app.herokuapp.com**. If someone has already taken your preferred name you can change to anything else that you want
+- `heroku create example --buildpack heroku/python`
+> This will try and create a Heroku project with the URL **example.herokuapp.com**. If someone has already taken your preferred name you can change to anything else that you want
 - `heroku addons:create heroku-postgresql:hobby-dev` - adds a free postgreSQL database to your free Heroku account
 
 
@@ -57,7 +57,7 @@ Why re-invent the wheel? Someone already got all this cool stuff working; use it
 > In [the previous post](https://blog.benhammond.tech/django-getting-started), we set our app's local config vars in an .env file and read them out dynamically. Please ensure your app is set up properly to use the following commands and allow Heroku to store its own config vars
 
 - `heroku config:set DISABLE_COLLECTSTATIC=1` - prevents one problem, seems to cause some others 🤦‍♂️ _(see note at the end for a potential fix)_
-- `heroku config:set DATABASE_NAME=your-app` - add your actual app name (the part before the `_project`)
+- `heroku config:set DATABASE_NAME=example-db`
 - `heroku config:set ENVIRONMENT=production`
 - `heroku config:set SECRET_KEY=whatever_your_secret_key_is` 
 
