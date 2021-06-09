@@ -21,9 +21,9 @@ You will need to have a Heroku account for this process. It's [free to sign up](
 This file will tell Heroku what actions to take when it receives a web request:
 - create a blank file with _no file extension_: `touch Procfile`
 > ensure the capitalization is exact on Procfile; if you accidentally mixed the casing up you can fix it using [this method I wrote about](https://blog.benhammond.tech/renaming-your-github-projects)
-- open the new `Procfile` in VSCode, add and save this line (subbing in your own project folder name; the one that ends with `_project`):
+- open the new `Procfile` in VSCode, and add this line. If you followed along with part one the project is called `example`. There should be 3 folders inside your local directory, a `.env`, a `main_app/` that was created most recently that contains your home route/view and a `example/` that was created initially and contains a route to your admin, and a `settings.py`. You want the last one of these.
 ```
-web: gunicorn example_project.wsgi
+web: gunicorn example.wsgi
 ```
 
 ## Runtime
