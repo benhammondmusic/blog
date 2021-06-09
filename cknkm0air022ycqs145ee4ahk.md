@@ -26,7 +26,13 @@ The following step-by-step guide will assist a beginning Python developer in lau
 Python can and should be run in a virtual environment; this relates to the fact that your actual operating system utilizes Python code and by safely keeping your projects in a protected environment, you minimize the risk of accidentally misconfiguring your entire system. In short, you'll be simulating a mini-computer inside your computer, and running your Django project from there. You can quickly tell when your terminal is inside of the virtual environment by looking for the _(.env)_ at the beginning of your terminal prompt:
 
 ![command line prompt showing parentheses env](https://cdn.hashnode.com/res/hashnode/image/upload/v1618546676648/ES9RjRW8D.png)
- 
+
+## New Folder
+
+Create and navigate into a new folder that will contain your entire project
+- `mkdir your_cool_thing`
+- `cd your_cool_thing`
+
 ## Virtual Environment
 
 Create a virtual environment
