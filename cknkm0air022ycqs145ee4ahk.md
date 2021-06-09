@@ -77,6 +77,9 @@ Django _projects_ can contain multiple Django _apps_.
 Create a new project
 - `django-admin startproject example .` 
 
+Make a file to secretly store your local environmental variables (a.k.a. config vars)
+- `touch example/.env`
+
 Make a git ignore file
 - `touch .gitignore`
 
@@ -98,18 +101,18 @@ example_project/.env
 
 ## Setting Up Environmental Variables
 
-- open `settings.py`
+- in VSCode, open `settings.py` (inside your `example/` folder)
 - scroll down to the line that declares the `SECRET_KEY=`, and **cut** the entire line (CMD+x)
 - open the newly created `example_project/.env` file (it should be currently empty)
 - paste in the secret key from above, but be sure to remove the empty spaces around the `=` and remove all quotes from the value after the `=`. You could also use any random secret string you like
-- add in `DEBUG=True` on a new line
+- add in `ENVIRONMENT=development` on a new line
+- add in `DATABASE_NAME=example-db` (or whatever you named your db that I told you to write down for later!)
 
 Your .env file should end up looking like this:
 
 ```
 ENVIRONMENT=development
 SECRET_KEY={{{your_secret_key}}}
-# this is the database name you used at the beginning of this setup; I told you to write it down somewhere... did you? 
 DATABASE_NAME=example-db
 ```
 
@@ -133,7 +136,7 @@ if config('ENVIRONMENT') == "development":
 
 ## Main App
 
-Create a second app within this project called **main_app**
+Back in your terminal (which should still have the environment activated), create a second app within this project called **main_app**
 - `python3 manage.py startapp main_app`
 
 > If you're having issues, make sure:
@@ -168,12 +171,14 @@ DATABASES = {
 ## Migrations
 
 Stage the db migrations (kind of like git adding and committing, but for changes to the database schema as the app evolves over time
-- `python3 manage.py makemigrations` (this probably won't do anything)
-- `python3 manage.py migrate` (this should run through the models in the app like the built in users, and add this info to your database)
+- stop the development server by going back to your terminal and pressing `CTRL+C`
+- `python3 manage.py makemigrations` 
+(this probably won't do anything)
+- `python3 manage.py migrate`
+ (this should run through the models in the app like the built in users, and add this info to your database)
 
 Restart your server (you can do this regularly while debugging)
-- kill the process using `<CONTROL> + C`
-- start it again: `python3 manage.py runserver`
+- start your server again: `python3 manage.py runserver`
  
 
 # Creating a Home Page
@@ -182,6 +187,7 @@ Restart your server (you can do this regularly while debugging)
 
 Routes are defined in the `urls.py` file(s); you _could_ add all of your routes to `example_project/urls.py`, but it is best practice for each Django app to define its own and include a link to the new URLs file in the project's URLconf:
 
+- stop the server: `CTRL+C`
 - `touch main_app/urls.py`
 - Open the newly created file in VSCode
 - Set up the imports and basic route using the code below:
@@ -249,7 +255,6 @@ Starting very simply, you'll create the `home.html` file
 
 
 Back in your browser, visit [localhost:8000](http://localhost:8000) and refresh to view your sweet new home page. If it doesn't work, remember to restart your Django server:
-- in terminal: `<CONTROL> + C`
 - `python3 manage.py runserver`
 
 # Done!
@@ -257,8 +262,7 @@ Back in your browser, visit [localhost:8000](http://localhost:8000) and refresh 
 You should now have a functioning (very simple) Django app within your project, viewable on your local machine. To continue building, follow the next steps:
 - Adding more routes, templates, and rendered data _(blog post currently being written)_
 - Reading from your database _(blog post currently being written)_
-- Deploying your Django app on Heroku _(blog post currently being written)_
- 
+- [Deploying your Django app on Heroku](https://blog.benhammond.tech/deploying-django-to-heroku)
 
 __Cover Photo by <a href="https://unsplash.com/@tateisimikito?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jukan Tateisi</a> on <a href="https://unsplash.com/collections/1342728/climbing?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>__
 __Pedalboard Photo by <a href="https://unsplash.com/@jondubon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jonathan Dubon</a> on <a href="https://unsplash.com/s/photos/pedalboard?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>__
