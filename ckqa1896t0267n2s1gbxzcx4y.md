@@ -282,7 +282,10 @@ Once you're notified the deploy was successful, you can use the terminal to manu
 - You should see `google-credentials.json` listed on the floor of your project. Yay!
 - `exit` will bring you back onto your local machine
 
-![heroku run bash recording](https://cdn.hashnode.com/res/hashnode/image/upload/v1624485407137/NqNsQSYsZ.gif)
+
+
+
+![heroku run bash screen recording](https://cdn.hashnode.com/res/hashnode/image/upload/v1624486726987/AZixt1Yb7.gif)
 
 # Run It!
 
@@ -290,7 +293,7 @@ Head to your deployed Heroku site, and see if the button still works to populate
 
 <iframe src="https://giphy.com/embed/l41YmQjOz9qg2Ecow" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
-> As noted in the previous article [Deploying Django to Heroku](https://blog.benhammond.tech/deploying-django-to-heroku), it can be helpful to configure your Django project and Heroku to give more detailed error logging. Check out the instructions on [this stackoverflow(https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django) where they explain adding DEBUG_PROPAGATE_EXCEPTIONS = True and a LOGGING = { ... } library to their settings.py
+> As noted in the previous article [Deploying Django to Heroku](https://blog.benhammond.tech/deploying-django-to-heroku), it can be helpful to configure your Django project and Heroku to give more detailed error logging. Check out the instructions on [this stackoverflow](https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django) where they explain adding `DEBUG_PROPAGATE_EXCEPTIONS = True` and a `LOGGING = { ... }` library to their `settings.py`
 
 > Sundial Photo by <a href="https://unsplash.com/@mkunsplash84?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Marian Kroell</a> on <a href="https://unsplash.com/s/photos/sundial?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
