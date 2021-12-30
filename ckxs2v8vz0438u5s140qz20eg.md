@@ -11,7 +11,7 @@ Enter Automator Quick Actions! Here's how I configured my right-click "Shrink Vi
 1. Open Automator from your Applications
 2. Select the gear icon "Quick Action" and click "Choose"
 3. Scroll down the list and drag "Run Shell Script" (with a little terminal icon) onto the right-hand "workflow" box
-4. Make the phrase say: "Workflow receives current `movie files` in `Finder.app`
+4. Make the phrase say: "Workflow receives current `movie files` in `Finder.app`"
 5. Inside the "Run Shell Script" box, select "Pass Input: `as arguments`"
 6. Paste this script in the text box:
 ``` bash
@@ -23,4 +23,7 @@ do
 done
 ```
 7.  `CMD-S` to save; I used the quick action name "Shrink Video"
-8. Find a video file, right-click on it, and the new Option should appear. You may have to restart to get it working... 
+8. Find a video file, right-click on it, and the new Option should appear under "Quick Actions" and/or "Services". 
+
+
+![Screen Shot 2021-12-29 at 9.52.40 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1640840046221/4djOapC8-.png)
