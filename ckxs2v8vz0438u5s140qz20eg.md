@@ -25,7 +25,6 @@ done
 7.  `CMD-S` to save; I used the quick action name "Shrink Video"
 8. Find a video file, right-click on it, and the new Option should appear under "Quick Actions" and/or "Services". 
 
-Next step: figure out the flags in `ffmpeg` to limit the output size to 10mb, compressing the original file as much as necessary to make it fit.
-
-
 ![Screen Shot 2021-12-29 at 9.52.40 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1640840046221/4djOapC8-.png)
+
+Next step: figure out the flags in `ffmpeg` to limit the output size to 10mb, compressing the original file as much as necessary to make it fit.
