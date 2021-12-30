@@ -1,4 +1,4 @@
-## Add "Shrink Video" to Apple Right-Click Menu
+## Right-click to "Shrink Video" on Mac
 
 I frequently upload screen recordings on my work in progress to our GitHub issues / PRs, but often hit the max file size of 10mb when demonstrating complicated features. I tried a few solutions including the built in "Encode Selected Video Files" which uses Quicktime, but that reduced the resolution of the video and I knew there was a better solution. 
 
@@ -24,6 +24,8 @@ done
 ```
 7.  `CMD-S` to save; I used the quick action name "Shrink Video"
 8. Find a video file, right-click on it, and the new Option should appear under "Quick Actions" and/or "Services". 
+
+Next step: figure out the flags in `ffmpeg` to limit the output size to 10mb, compressing the original file as much as necessary to make it fit.
 
 
 ![Screen Shot 2021-12-29 at 9.52.40 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1640840046221/4djOapC8-.png)
