@@ -1,4 +1,6 @@
-## Deploying a React App to Heroku
+# Deploying a React App to Heroku
+
+*This post was written back in the days where Heroku provided free hosting; do not expect any example projects or links to Heroku to work.*
 
 This guide is step #2, written to assist my group in getting our team's full stack app deployed. This post will focus on the React frontend; to get a Node backend deployed to Heroku first, please follow [part 1](https://blog.benhammond.tech/deploying-a-node-express-backend-to-heroku), and to tie it all together  [check out part 3](https://blog.benhammond.tech/connecting-your-deployed-frontend-backend-and-mongodb-atlas-database) .
 
@@ -53,7 +55,7 @@ _then in your command line_
 - ```heroku login``` back in your command line, press any button, log in with the browser that pops up, then close that browser window
 - you can also do a local test run with ```heroku local web``` if you'd like; make sure you kill anything running on port 5000 first. 
 
-- ```heroku git:remote -a YOUR-FRONTED-HEROKU-APP-NAME``` and replace ```YOUR-FRONTED-HEROKU-APP-NAME``` with whatever the exact name of this *new, front-end Heroku app* is that you just made. For instance, mine is deployed to *gig-board.herokuapp.com* so I will use *gig-board*.
+- ```heroku git:remote -a YOUR-FRONTED-HEROKU-APP-NAME``` and replace ```YOUR-FRONTED-HEROKU-APP-NAME``` with whatever the exact name of this *new, front-end Heroku app* is that you just made. For instance, mine ~~is~~ *was* deployed to *gig-board.herokuapp.com* so I will use *gig-board*.
 - ```git add .```
 - ```git commit -am "make it work for frontend too, please"```
 - ```git push heroku main```
