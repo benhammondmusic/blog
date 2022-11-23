@@ -1,4 +1,6 @@
-## Connecting Your Deployed Frontend, Backend and MongoDB Atlas Database
+# Connecting Your Deployed Frontend, Backend and MongoDB Atlas Database
+
+*This post was written back in the days where Heroku provided free hosting; do not expect any example projects or links to Heroku to work.*
 
 > Important things to note: you must restart your server anytime you change an environmental variable in your .env file. Also, for React apps made with `create-react-app`, you must prepend all of your custom environmental variables with `REACT_APP_`
 
@@ -154,7 +156,7 @@ Loading up [3000](http://localhost:3000) shouldn't appear any different now; it'
 - make sure the entries there include the URL for your _deployed_ backend, and you'll also need to include your weather API key as well. Ours looks like this:
 ![front end config vars heroku screenshot.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1617247908463/Pm3u9oYiH.png)
 
-> Be sure you don't include the trailing slash on your URL; this is easy to accidently do if you are copying/pasting the address from your browser's address bar. To clarify, the `VALUE` field should look like this:
+> Be sure you don't include the trailing slash on your URL; this is easy to accidentally do if you are copying/pasting the address from your browser's address bar. To clarify, the `VALUE` field should look like this:
 
 ```
 https://ben-gigboard.herokuapp.com
