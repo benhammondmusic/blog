@@ -1,4 +1,6 @@
-## Jr Dev Flashcards
+# Jr Dev Flashcards
+
+*This post was written back in the days where Heroku provided free hosting; do not expect any example projects or links to Heroku to work.*
 
 %[https://www.youtube.com/watch?v=9PfeSBfwitk&ab_channel=BenHammond]
 
@@ -126,5 +128,4 @@ var corsOptions = {
 
 ### Deployments
 
-- [Frontend Client](https://jr-dev-flashcards.netlify.app/) - Use this to view the flashcards app.
-- [Backend - API](http://jr-dev-flashcards.herokuapp.com/api)
+- Out of service until I migrate the backend API away from Heroku
