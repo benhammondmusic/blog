@@ -1,10 +1,12 @@
-## Connecting Google Cal API and Django
+# Connecting Google Cal API and Django
+
+*This post was written back in the days where Heroku provided free hosting; do not expect any example projects or links to Heroku to work.*
 
 > Some tricky configuration is required, and the existing Python-specific documentation is sparse and buggy (or simply not written for a production setting). My eventual solution involves using a Google Cloud Platform service account and a custom Heroku buildpack
 
 # The Problem
 
-[Little Cabin](https://littlecabin.herokuapp.com) (my final project for my recently completed General Assembly bootcamp), provides tools for extended families to securely share their vacation property’s logistics and memories. One key feature is allowing the in-app scheduling to sync with a Google Calendar, and though I assumed it would be a simple matter of hooking up to the Google Calendar API, it was by far the most difficult problem to solve. 
+Little Cabin (my final project for my recently completed General Assembly bootcamp), provides tools for extended families to securely share their vacation property’s logistics and memories. One key feature is allowing the in-app scheduling to sync with a Google Calendar, and though I assumed it would be a simple matter of hooking up to the Google Calendar API, it was by far the most difficult problem to solve. 
 
 
 ![Screenshot from the author's Little Cabin App](https://cdn.hashnode.com/res/hashnode/image/upload/v1624483254791/89bl7Mbi7.png)
