@@ -30,6 +30,6 @@ You can also use this flagged-flag directly on the command line if you only want
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1680888592800/350734b2-f968-4c2a-ba1d-0013152eb155.png align="center")
 
-And yes, if you look closely, I am pleased to finally be working on a feature that will kill a UI carousel that has been in place for far too long. If you're wondering why this is exciting to me, check out [Should I Use A Carousel?](https://shouldiuseacarousel.com/)
+Now that you have the address, you can easily [view the development server directly on your mobile device](https://blog.benhammond.tech/how-to-view-localhost-on-mobile).
 
-Cover image: [Saffu](https://unsplash.com/@saffu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)[Unsplash](https://unsplash.com/s/photos/fast?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+And yes, if you look closely, I am pleased to finally be working on a feature that will kill a UI carousel that has been in place for far too long. If you're wondering why this is exciting to me, check out [Should I Use A Carousel?](https://shouldiuseacarousel.com/)
