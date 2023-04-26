@@ -20,4 +20,6 @@ GitHub recently introduced a Pull Request level setting that gets remembered for
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1682539042831/ed73886c-0c64-428a-8bd3-9b7542a2b1e2.gif align="center")
 
-The other option is to manually append `?w=1` to the pull request URL, which triggers the same white space suppression. Luckily, this can be plopped into a bookmarklet, allowing us a 1-click option for easier PR reviewing. Follow the steps at the top of this post to make your very own bookmarklet. Enjoy!
+The other option is to manually append `?w=1` to the pull request URL, which triggers the same white space suppression. Luckily, this can be done automatically via JavaScript plopped into a bookmarklet, allowing us a 1-click option for easier PR reviewing. Follow the steps at the top of this post to make your very own bookmarklet. Enjoy!
+
+Caveat: this won’t work if there are existing params on the URL, since subsequent params require the `&` rather than the initial param’s `?`
