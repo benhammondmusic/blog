@@ -10,15 +10,15 @@ tags: python, pandas, rust, datavisualization, polars
 
 ## Crunching a few hundred million lines of data
 
-At the [Health Equity Tracker](https://healthequitytracker.org/exploredata), the largest dataset we work with is a case-level set provided by the CDC of every COVID-19 infection in the United States along with all sorts of other information about the patient including race, ethnicity, county, other symptoms, and much more. These data are provided as zipped .csv files in a private GitHub repo (due to patient privacy), and all total represent includes several hundred million rows across over a dozen files. Initially, our tracker only provided the cumulative "snapshot" of the current rates of disease outcomes by race, age, or sex to the county level.
+At the [Health Equity Tracker](https://healthequitytracker.org/exploredata), the largest dataset we work with is a case-level set provided by the CDC with every COVID-19 infection in the United States, along with additional information including race, ethnicity, county, and other symptoms. The data is provided in zipped .csv files in a private GitHub repo (due to patient privacy) and contains several hundred million rows across over a dozen files. Initially, our tracker as coded by Google.org provided only the cumulative "snapshot" of the current rates of disease outcomes by race, age, or sex to the county level.
 
 [![Choropleth map from the Health Equity Tracker showing the United States, with states and territories colored from dark green to yellow representing cumulative COVID rates in each state](https://cdn.hashnode.com/res/hashnode/image/upload/v1694668435759/03be141e-0b64-4cde-8671-ca840b25b819.png align="center")](https://healthequitytracker.org/exploredata?mls=1.covid-3.00&group1=All&dt1=covid_hospitalizations#rate-map)
 
-However, in a big push by our team, we were able to implement time-tracking, with which we additionally aggregate these disease rates across every month since January 2020.
+Last year however, in a big push by our team at Morehouse School of Medicine, we were able to implement time-tracking, whereby we additionally aggregate and plot these disease rates across every month since January 2020.
 
 [![Time-series line chart comparing monthly rates of White and Native American COVID hospitalizations since early 2020. The line for American Indian and Alaska Native is significantly higher than White at essentially every measured point in time  ](https://cdn.hashnode.com/res/hashnode/image/upload/v1694668563775/827ccfaf-99e1-4d7b-8d5e-eefb0029e80d.png align="center")](https://healthequitytracker.org/exploredata?mls=1.covid-3.00&group1=All&dt1=covid_hospitalizations#rates-over-time)
 
-As the requirements grew, so did the time it took to run the aggregation script, which needed to be done locally by an authorized team member before being compliant to upload for further processing and calculations on Google Cloud run. The CDC releases new datasets monthly, so this entire process easily burned an entire day a month for one of our team members. After starting the script locally on my 2021 MacBook Pro, it would take **nearly 3 hours to complete the aggregations**.
+As the requirements grew, so did the time it took to run the aggregation script, which needed to be done locally by an authorized team member before uploading for further processing and calculations on Google Cloud Run. The CDC releases new datasets regularly, so this entire process easily burned an entire day each month for one of our team members. After starting the script locally on my 2021 MacBook Pro, it would take **nearly 3 hours to complete the aggregations**.
 
 > With a few tweaks, I was able to reduce that 3-hour run-time to ~25 minutes!
 
@@ -28,7 +28,7 @@ I love that our codebase is open-source, so you can [check out the exact PR here
 
 > Time taken by the original code to process a single file: 3*13s*
 
-Here are the incremental changes I made, and the improvement measured from each step:
+Here are the incremental changes I made, and the improved speed measured from each step:
 
 * Two major items: Using a vectorized `combine_race_eth()` function, which used Pandas' built-in optimized functions rather than mapping/applying a regular Python lambda function against each row, and only reading in the needed columns with the arg `usecols` in the `read_csv`: **191s**
     
@@ -45,19 +45,19 @@ Here are the incremental changes I made, and the improvement measured from each 
 
 ## Sanity Checks
 
-Of the utmost importance for us as a research institution, particularly one presenting information on underserved populations, is to ensure data integrity every step of the way. To ensure my refactor didn't cause unexpected results, I implemented a "sanity check" and renamed all of the existing .csv results (produced by the old code) with the suffix `_old,` then wrote a quick bash script that compared the `_old` and newly refactored results:
+Of the utmost importance for us as a research institution, particularly one presenting information on underserved populations, is to ensure data integrity every step of the way. To ensure my refactor didn't cause unexpected results, I implemented a "sanity check" and renamed all of the existing .csv results (produced by the old code) with the suffix `_old,` then wrote a quick bash script that compared every line in the `_old` and newly refactored results:
 
 * ```bash
-        for new_file in cdc_restricted_by_*.csv; do
-            old_file="old_$new_file"
-            if diff -q "$old_file" "$new_file"; then
-                echo "Files $old_file and $new_file are identical."
-            fi
-        done
+          for new_file in cdc_restricted_by_*.csv; do
+              old_file="old_$new_file"
+              if diff -q "$old_file" "$new_file"; then
+                  echo "Files $old_file and $new_file are identical."
+              fi
+          done
     ```
     
 
-To ensure the check itself was working, I also ran the `diff` command against the county\_race file and the state\_race file and observed hundreds of differences (as expected).
+To ensure the check itself was working, I also ran this `diff` command to compare the county\_race file and the state\_race file and observed hundreds of differences (as expected).
 
 ## Abandoned Optimizations
 
@@ -87,7 +87,7 @@ Although 25 minutes is a lot more manageable than a few hours, and the script is
     
 * **🐻‍❄️Polars instead of 🐼Pandas:** A more significant change, which would further complicate the codebase, is to introduce a new library for this aggregation called Polars. Its usage is quite similar to Pandas, but it can stream data and manipulate datasets that are larger than the machine's memory. You can load data into a "lazyframe", and perform various aggregations, filters, and calculations, and then the library is clever enough to only deal with the bits of data that are needed for the specified processes. Interestingly, Polars is written in Rust, but the library is available both within Rust AND within Python.
     
-* 🦀**Rust** **instead of** 🐍**Python**: Maybe out of scope for the project, but of course the only option I've started pursuing (mainly because it was exciting to finally have a tech problem that Rust could help me solve and I wanted to check out what all the buzz was about). Since this local aggregation is performed on the local development machine, and it quite distinct from the rest of our Google Cloud Run / Airflow data pipelines, I could refactor this entire script into Rust (using Polars mentioned above).
+* 🦀**Rust** **instead of** 🐍**Python**: Maybe out of scope for the project, but of course the only option I've started pursuing (mainly because it was exciting to finally have a tech problem that Rust could help me solve and I wanted to check out what all the buzz was about). Since this aggregation is performed on the local development machine, and is quite distinct from the rest of our Airflow data pipelines, I could refactor this entire script into Rust (using Polars as mentioned above).
     
 
 Here's a little snippet of what I've gotten working... Be nice Rustaceans! I'm sure this is super inefficient!
@@ -165,4 +165,4 @@ So far I've gotten it to the point that it:
 * Performs the column calculations, manipulations, and aggregations needed for the `SEX` table generations and the produced tables are identical to the full tables produced by our Python code
     
 
-Run time is well under 5 minutes! Of course, that's only for one of the breakdowns, so it's still not clear if my super newbie Rust code is actually going to save any time or not. I'll follow up once I've had a chance to finish, for now the [repo is available on my GitHub](https://github.com/benhammondmusic/rust-big-data).
+Run time is well under 5 minutes! Of course, that's only for one of the breakdowns, so it's still not clear if my super newbie Rust code is actually going to save any time or not. I'll follow up once I've had a chance to finish, for now the [repo is available on my GitHub](https://github.com/benhammondmusic/rust-big-data). Overall, I've enjoyed messing around in Rust (it feels like when I was learning TypeScript, except I can't just cheat and use `any` to force things to work when the compiler yells!). And importantly, I've freed up a lot of free time for our small team, allowing us to work on new features for the tracker and [waste less time on the waiting for code to run](https://xkcd.com/303/).
