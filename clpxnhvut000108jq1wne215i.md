@@ -10,7 +10,7 @@ tags: testing, e2e, github-actions-1, playwright
 
 <div data-node-type="callout">
 <div data-node-type="callout-emoji">💡</div>
-<div data-node-type="callout-text">In short: you should strongly consider using Playwright for end-to-end testing of your modern web app; you definitely shouldn't sleep on its built-in code generation and reporting features; you should aim to target stable, deployed URLs when possible.</div>
+<div data-node-type="callout-text">In short: use Playwright for end-to-end testing of your web app; don’t sleep on its built-in code generation and reporting features; aim to target stable, deployed URLs when possible.</div>
 </div>
 
 ## What is Playwright?
@@ -21,7 +21,9 @@ Like any good testing tool, it can (and should) be available locally as you code
 
 ## What was wrong with the current setup?
 
-When I started as a software engineer on the [Health Equity Tracker](http://healthequitytracker.org), there were no frontend-specific E2E tests in place. All QA was done manually by the developers (and helpful department members on big releases), and as you can imagine on a complex dashboard-style app, edge-case bugs often snuck through the review process. I took it as a challenge to a) identify the up-and-coming industry standard for frontend e2e testing and b) implement a testing suite basically on my own. Overall I am happy to say I succeeded, and I was able to initially add coverage to the most basic parts of the application. However, with the improvement of both my development skills and Playwright as a tool, we have been able to make significant improvements to our E2E testing setup, making the tests harder (less fragile and flaky), better (improved developer experience with increased visibility and maintainability), faster (the tests were taking quite a long time on CI to run and we were able to reduce that time significantly), and stronger (more comprehensive and representative of the actual user experience).
+When I started as a software engineer on the [Health Equity Tracker](http://healthequitytracker.org), there were no frontend-specific E2E tests in place. All QA was done manually by the developers (and helpful department members on big releases), and as you can imagine on a complex dashboard-style app, edge-case bugs often snuck through the review process. I took it as a challenge to a) identify the up-and-coming industry standard for frontend e2e testing and b) implement a testing suite basically on my own.
+
+Overall I am happy to say I succeeded, and I was able to initially add coverage to the most basic parts of the application. However, with the improvement of both my development skills and Playwright as a tool, we have been able to make significant improvements to our E2E testing setup, making the tests harder (less fragile and flaky), better (improved developer experience with increased visibility and maintainability), faster (the tests were taking quite a long time on CI to run and we were able to reduce that time significantly), and stronger (more comprehensive and representative of the actual user experience).
 
 ## `HARDER`
 
@@ -38,9 +40,9 @@ To make our testing setup less fragile, we targeted our deployed, production bui
 | CI runs the tests every time a PR is merged into `main` and a new version of the frontend is deployed to staging | `https://dev.healthequitytracker.org` which is our "dev" site, a staging pre-production preview that should perfectly mirror what will be released to production |
 | CI chron job runs nightly against the real production site | `https://healthequitytracker.org` |
 
-The logic for this dynamic `baseUrl` was straightforward for prod, staging, and local, as each has a consistent URL to test against and its own `.env` file to store the URL string. However, our CI also uses a unique test URL for every PR opened against `main`. This enables fully deployed feature testing (e.g., on a real mobile device, or to run ideas by non-technical stakeholders). Passing this unique deploy preview URL into our test via GitHub Actions required some research and manual trial and error, but we got it working fairly quickly. Some hiccups still need fine-tuning, but overall, I'm pleased to implement this idea that's been in the back of my head for over a year.
+The logic for this dynamic `baseUrl` was straightforward for prod, staging, and local, as each has a consistent URL to test against and its own `.env` file to store the URL string. However, our CI also uses a unique test URL for every PR opened against `main`. This enables fully deployed feature testing (e.g., on a real mobile device, or to run ideas by non-technical stakeholders).
 
-To set the `baseUrl` per environment, I added the following to my config:
+Passing this unique deploy preview URL into our test via GitHub Actions required some research and manual trial and error, but we got it working fairly quickly. Some hiccups still need fine-tuning, but overall, I'm pleased to implement this idea that's been in the back of my head for over a year. To set the `baseUrl` per environment, I added the following to my config:
 
 ```typescript
 use: {
@@ -139,7 +141,9 @@ jobs:
 
 > Increasing reporting visibility to improve developer experience and velocity
 
-Initial configuration attempts inadvertently failed to pass the required environmental variables. As a result, the React site would load, but the fetches from our data API would fail. This caused endless issues; running the tests locally would pass fine, but running on CI would fail. Lack of visibility into the Playwright reporting on CI made it impossible to debug these failures. Finally, I properly implemented the reporting feature on CI, and then, importantly, set it to upload the generated reports as artifacts (final step of the GitHub Actions file above). Playwright includes great video replay, screenshot, and stack trace visualizations that allow you to rewatch what was happening when your tests fail. This insight into the CI failures made it immediately where I had been calling the wrong npm script. Going forward, this increased visibility and improved testing structure should allow our team to write tests more easily, have more confidence in their results, and quickly update them when things go wrong.
+Initial configuration attempts inadvertently failed to pass the required environmental variables. As a result, the React site would load, but the fetches from our data API would fail. This caused endless issues; running the tests locally would pass fine, but running on CI would fail. Lack of visibility into the Playwright reporting on CI made it impossible to debug these failures.
+
+Finally, I properly implemented the reporting feature on CI, and then, importantly, set it to upload the generated reports as artifacts (final step of the GitHub Actions file above). Playwright includes great video replay, screenshot, and stack trace visualizations that allow you to rewatch what was happening when your tests fail. This insight into the CI failures made it immediately where I had been calling the wrong npm script. Going forward, this increased visibility and improved testing structure should allow our team to write tests more easily, have more confidence in their results, and quickly update them when things go wrong.
 
 ![actual video of playwright's video capture showing site working but failing to load data](https://cdn.hashnode.com/res/hashnode/image/upload/v1702099118926/becf4765-32f7-41ac-842e-d8b2aae1e4df.gif align="center")
 
