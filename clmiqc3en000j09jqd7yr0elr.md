@@ -10,15 +10,15 @@ tags: python, pandas, rust, datavisualization, polars
 
 ## Crunching a few hundred million lines of data
 
-At the [Health Equity Tracker](https://healthequitytracker.org/exploredata), the largest dataset we work with is a case-level set provided by the CDC with every COVID-19 infection in the United States, along with additional information including race, ethnicity, county, and other symptoms. The data is provided in zipped .csv files in a private GitHub repo (due to patient privacy) and contains several hundred million rows across over a dozen files. Initially, our tracker, as coded by Google.org provided only the cumulative "snapshot" of the current rates of disease by race, age, or sex, down to the county level.
+At the [Health Equity Tracker](https://healthequitytracker.org/exploredata), the largest dataset we work with is a case-level set provided by the CDC with every COVID-19 infection in the United States, along with additional information including race, ethnicity, county, and other symptoms. The data is provided in zipped .csv files in a private GitHub repo (due to patient privacy) and contains several hundred million rows across over a dozen files. Initially, our tracker as coded by [Google.org](http://Google.org) provided only the cumulative "snapshot" of the current rates of disease outcomes by race, age, or sex to the county level.
 
 [![Choropleth map from the Health Equity Tracker showing the United States, with states and territories colored from dark green to yellow representing cumulative COVID rates in each state](https://cdn.hashnode.com/res/hashnode/image/upload/v1694668435759/03be141e-0b64-4cde-8671-ca840b25b819.png align="center")](https://healthequitytracker.org/exploredata?mls=1.covid-3.00&group1=All&dt1=covid_hospitalizations#rate-map)
 
-Last year, however, in a major technical effort by our team at Morehouse School of Medicine and data visualization expert [Mia Svarvas](http://miaszarvas.com), we were able to implement time-tracking, whereby we could now aggregate and plot these disease rates across every month since the start of the COVID-19 pandemic.
+Last year however, in a big push by our team at Morehouse School of Medicine, we were able to implement time-tracking, whereby we additionally aggregate and plot these disease rates across every month since January 2020.
 
 [![Time-series line chart comparing monthly rates of White and Native American COVID hospitalizations since early 2020. The line for American Indian and Alaska Native is significantly higher than White at essentially every measured point in time  ](https://cdn.hashnode.com/res/hashnode/image/upload/v1694668563775/827ccfaf-99e1-4d7b-8d5e-eefb0029e80d.png align="center")](https://healthequitytracker.org/exploredata?mls=1.covid-3.00&group1=All&dt1=covid_hospitalizations#rates-over-time)
 
-As the requirements grew, so did the time it took to run the aggregation script, which needed to be done locally by an authorized team member before uploading for further processing and calculations on Google Cloud Run. The CDC releases new datasets regularly, so this entire process would easily take an entire day of each month for a team member. Running locally on my 2021 MacBook Pro, it would take **nearly 3 hours to complete the aggregations**.
+As the requirements grew, so did the time it took to run the aggregation script, which needed to be done locally by an authorized team member before uploading for further processing and calculations on Google Cloud Run. The CDC releases new datasets regularly, so this entire process easily burned an entire day each month for one of our team members. After starting the script locally on my 2021 MacBook Pro, it would take **nearly 3 hours to complete the aggregations**.
 
 > With a few tweaks, I was able to reduce that 3-hour run-time to ~25 minutes!
 
@@ -30,42 +30,40 @@ I love that our codebase is open-source, so you can [check out the exact PR here
 
 Here are the incremental changes I made, and the improved speed measured from each step:
 
-* Two major items: Using Pandas' built-in optimized (vectorized) functions inside our `combine_race_eth()` utility, rather than mapping/applying a regular Python lambda function against each row, and only reading in the relevant subset of columns with `usecols`: **191s**
+* Two major items: Using a vectorized `combine_race_eth()` function, which used Pandas' built-in optimized functions rather than mapping/applying a regular Python lambda function against each row, and only reading in the needed columns with the arg `usecols` in the `read_csv`: **191s**
     
 * The above changes, plus removing some unused string manipulations meant to detect and remove empty quotes `""`: **180s**
     
-* The above changes, plus using `chunk_size = 1_000_000`. This argument splits the data frame into virtual chunks of rows (in this case one million) so that your machine doesn't have to hold the entire thing in memory. Generally speaking, smaller and more numerous chunks will require less processing power but will require more time: **75s**
+* The above changes, plus using `chunk_size` = 1 million (using chunk size splits the df into chunks so that your machine doesn't have to hold the entire thing in memory; however my computer is fast enough to hold the entire thing so it's faster to have bigger chunks and fewer iterations. : **75s**
     
 * Increasing `chunk_size` to 2 million: **64s**
     
-* Increasing `chunk_size` to 5 million: **57s**
-    
-* At this point, I am functionally not using chunking, because the number of rows in the source data is less than the size of my chunk. However, I left it in place to future-proof against the CDC possibly shipping files with over 5 million rows
+* Increasing `chunk_size` to 5 million (I left the chunking in place even though the `chunk_size` effectively doesn't use it, in case the CDC does ever ship us a file over 5 million rows, then this code will use the chunking as needed): **57s**
     
 
-> When running against the full set of all raw files, the run time went from 2 hours and 40 minutes down to 34 minutes and produced identical output files: **Over 75% time savings!**
+> When running against the full set of all raw files, the run time went [from 2 hours](x-apple-data-detectors://2) and 40 minutes down to 34 minutes and produced identical output files: Nearly 5x faster!
 
 ## Sanity Checks
 
-Data integrity is of the utmost importance for us as a research institution, particularly one presenting information on underserved and marginalized populations. To ensure my refactor didn't cause unexpected results, I implemented a "sanity check", and renamed all of the existing .csv results (produced by the old code) with the suffix `_old,` then wrote a quick bash script that compared every line in the `_old` and newly refactored results:
+Of the utmost importance for us as a research institution, particularly one presenting information on underserved populations, is to ensure data integrity every step of the way. To ensure my refactor didn't cause unexpected results, I implemented a "sanity check" and renamed all of the existing .csv results (produced by the old code) with the suffix `_old,` then wrote a quick bash script that compared every line in the `_old` and newly refactored results:
 
 * ```bash
-            for new_file in cdc_restricted_by_*.csv; do
-                old_file="old_$new_file"
-                if diff -q "$old_file" "$new_file"; then
-                    echo "Files $old_file and $new_file are identical."
-                fi
-            done
+              for new_file in cdc_restricted_by_*.csv; do
+                  old_file="old_$new_file"
+                  if diff -q "$old_file" "$new_file"; then
+                      echo "Files $old_file and $new_file are identical."
+                  fi
+              done
     ```
     
 
-To "test the test" and confirm the check itself was working, I also ran this `diff` command to compare the `county_race` and `state_race` files, and observed hundreds of differences (as expected).
+To ensure the check itself was working, I also ran this `diff` command to compare the county\_race file and the state\_race file and observed hundreds of differences (as expected).
 
 ## Abandoned Optimizations
 
-The most common suggestion I found when researching Panda's optimization was to utilize the vectorized methods built-in to Pandas, rather than using `.apply()` to apply a lambda or function against each row of the data frame iteratively. In some cases, like refactoring the `race` and `ethnicity` -&gt; `race/ethnicity` function, this did speed up the algorithm significantly. However, there were other vectorization optimizations I tried that surprisingly *slowed down* the script, making the problem worse! These were all `.str` Pandas methods, which while sometimes convenient are [a known subset](https://github.com/pandas-dev/pandas/issues/35864) of inefficient vectorized methods.
+The most common suggestion I found when researching Panda's optimization was to utilize the vectorized methods built-in to Pandas, rather than using `.apply()` to apply a lambda or function against each row of the dataframe iteratively. In some cases, like refactoring the `race` and `ethnicity` -&gt; `race/ethnicity` function, this did speed up the algorithm significantly. However, there were several further vectorization optimizations I tried out that surprisingly *slowed down* the process and made it worse. These were all `.str` dataframe methods, which are [a known subset](https://github.com/pandas-dev/pandas/issues/35864) of vectorized methods that can be less efficient than the Python loop-based approach.
 
-One example was dealing with our county [FIPS (Federal Information Processing System) codes](https://en.wikipedia.org/wiki/FIPS_county_code) which need to be treated as strings that can include leading zeros (for example Denver County FIPS is `08031`, which when treated as a number turns into `8,031`. You might have run into this issue in Microsoft Excel when inputting things like ZIP codes as well.
+One example of an abandoned optimization was dealing with our county FIPS codes that need to be treated as strings, complete with leading zeros (for example Denver County FIPS is `08031`, which when treated as a number turns into `8,031`.
 
 The type conversion and string formatting are done in the existing code using `.map()`:
 
@@ -83,16 +81,16 @@ Overall, any attempts at optimizations with the data frame `.str` methods were a
 
 ## Next steps
 
-Although 25 minutes is far more manageable than multiple hours, there are several more steps I am looking into to further optimize this aggregation. If you are reading this and have insight into any of these techniques, let me know in the comments!
+Although 25 minutes is a lot more manageable than a few hours, and the script is now only run monthly, there are several more steps I am looking into to further optimize this aggregation. If you are reading this and have insight into any of these techniques, let me know in the comments!
 
-* 🧑‍💻**Parquet** **instead of** 🧑‍💻**CSV**: Using the CDC's provided `.parquet` files instead of the `.csv` files. From what I understand Parquet files are binary/machine-readable, so slightly more difficult to work with (you can't just peek at the contents in VSCode) but more efficient in terms of memory utilization. However, I'm not certain this would provide significant benefits, since each file is used briefly and never continuously opened and manipulated.
+* 🧑‍💻**Parquet** **instead of** 🧑‍💻**CSV**: Using the CDC's provided `.parquet` files instead of the `.csv` files. From what I understand Parquet files are binary/machine-readable, so slightly more difficult to work with (you can't just peek at the contents in VSCode) but more efficient from a memory standpoint. It's unclear if this would be super helpful though, since each file is only used briefly and not continuously opened and manipulated.
     
-* **🐻‍❄️Polars instead of 🐼Pandas:** A more significant change, which would further complicate the codebase, is to introduce a new data frame library for this aggregation called Polars. Its usage is quite similar to Pandas, but it can stream and manipulate datasets that are larger than the machine's memory. When loading data into a "lazy frame" and performing various aggregations, filters, and calculations, the library is clever enough to only process the bits needed for the specified work. Although Polars is written in Rust, the library is available for both Rust and Python.
+* **🐻‍❄️Polars instead of 🐼Pandas:** A more significant change, which would further complicate the codebase, is to introduce a new library for this aggregation called Polars. Its usage is quite similar to Pandas, but it can stream data and manipulate datasets that are larger than the machine's memory. You can load data into a "lazyframe", and perform various aggregations, filters, and calculations, and then the library is clever enough to only deal with the bits of data that are needed for the specified processes. Interestingly, Polars is written in Rust, but the library is available both within Rust AND within Python.
     
-* 🦀**Rust** **instead of** 🐍**Python**: Maybe out of scope for the project, but of course the only option I've started pursuing (mainly because it was exciting to finally have a tech problem that Rust could help me solve and I wanted to check out what all the buzz was about). Since this aggregation is performed on the local development machine and is quite distinct from the rest of our Airflow data pipelines, I could refactor this entire script into Rust (using Polars as mentioned above).
+* 🦀**Rust** **instead of** 🐍**Python**: Maybe out of scope for the project, but of course the only option I've started pursuing (mainly because it was exciting to finally have a tech problem that Rust could help me solve and I wanted to check out what all the buzz was about). Since this aggregation is performed on the local development machine, and is quite distinct from the rest of our Airflow data pipelines, I could refactor this entire script into Rust (using Polars as mentioned above).
     
 
-Here's a little snippet of what I've got working. *Be kindly, ye Rustaceans!*
+Here's a little snippet of what I've gotten working... Be nice Rustaceans! I'm sure this is super inefficient!
 
 ```rust
 fn process_lazyframe_into_by_sex_df(lf: LazyFrame) -> Result<DataFrame, PolarsError> {
@@ -160,11 +158,11 @@ fn process_lazyframe_into_by_sex_df(lf: LazyFrame) -> Result<DataFrame, PolarsEr
 
 So far I've gotten it to the point that it:
 
-* Loads every .csv file from a particular directory into memory
+* Loads all the .csv files in a folder
     
 * Combines them into a LazyFrame
     
 * Performs the column calculations, manipulations, and aggregations needed for the `SEX` table generations and the produced tables are identical to the full tables produced by our Python code
     
 
-Run time is well under 5 minutes! Of course, that's only for a single demographic breakdown, so it's still not clear if my super newbie Rust code will truly save time. I'll follow up once I've had a chance to finish, for now the [repo is available on my GitHub](https://github.com/benhammondmusic/rust-big-data). Overall, I've enjoyed messing around in Rust (it feels like when I was learning TypeScript, except I can't just cheat and use `any` to force things to work when the compiler yells!). And importantly, I've freed up a lot of free time for our small team, allowing us to work on new features for the tracker and [waste less time on the waiting for code to run](https://xkcd.com/303/).
+Run time is well under 5 minutes! Of course, that's only for one of the breakdowns, so it's still not clear if my super newbie Rust code is actually going to save any time or not. I'll follow up once I've had a chance to finish, for now the [repo is available on my GitHub](https://github.com/benhammondmusic/rust-big-data). Overall, I've enjoyed messing around in Rust (it feels like when I was learning TypeScript, except I can't just cheat and use `any` to force things to work when the compiler yells!). And importantly, I've freed up a lot of free time for our small team, allowing us to work on new features for the tracker and [waste less time on the waiting for code to run](https://xkcd.com/303/).
